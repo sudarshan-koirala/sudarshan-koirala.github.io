@@ -1,0 +1,56 @@
+---
+export interface PostCardData {
+  title: string;
+  url: string;
+  external?: boolean;
+  date: Date;
+  category: string;
+  description?: string;
+  image?: string;
+}
+
+interface Props {
+  post: PostCardData;
+}
+
+const { post } = Astro.props;
+
+// Category → gradient used when a post has no cover image
+const gradients: Record<string, string> = {
+  'AI Tools': 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+  'Databricks': 'linear-gradient(135deg, #f97316, #ef4444)',
+  'LLMs & RAG': 'linear-gradient(135deg, #0d9488, #10b981)',
+  'Engineering': 'linear-gradient(135deg, #334155, #2563eb)',
+  'Data Science': 'linear-gradient(135deg, #db2777, #8b5cf6)',
+};
+const gradient = gradients[post.category] ?? 'linear-gradient(135deg, #475569, #1e293b)';
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+const linkAttrs = post.external ? { target: '_blank', rel: 'noopener' } : {};
+---
+
+<article class="post-card" data-category={post.category}>
+  <a href={post.url} class="post-card-link" {...linkAttrs}>
+    {post.image ? (
+      <div class="post-card-cover">
+        <img src={post.image} alt={post.title} loading="lazy" />
+      </div>
+    ) : (
+      <div class="post-card-cover post-card-cover--fallback" style={`background:${gradient}`}>
+        <span>{post.title}</span>
+      </div>
+    )}
+    <div class="post-card-body">
+      <div class="post-card-meta">
+        <span class="post-card-cat">{post.category}</span>
+        <span>{formatDate(post.date)}</span>
+        {post.external && <span class="post-card-ext">Medium ↗</span>}
+      </div>
+      <h3 class="post-card-title">{post.title}</h3>
+      {post.description && <p class="post-card-desc">{post.description}</p>}
+    </div>
+  </a>
+</article>

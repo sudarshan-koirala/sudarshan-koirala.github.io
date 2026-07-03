@@ -1,73 +1,48 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { getCollection } from 'astro:content';
+import PostCard from '../../components/PostCard.astro';
+import { getAllPosts } from '../../data/posts';
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
-function formatDate(date: Date) {
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-}
-
-// Latest 10 articles from medium.com/@sudarshan-koirala
-const mediumPosts = [
-  { title: 'Omnigent: The Meta-Harness for All Your AI Agents', date: new Date('2026-07-03'), url: 'https://medium.com/@sudarshan-koirala/omnigent-the-meta-harness-for-all-your-ai-agents-4c91d2d8dfae' },
-  { title: 'Prompt vs Context vs Harness Engineering: The Three Layers Around Every AI Model', date: new Date('2026-07-02'), url: 'https://medium.com/@sudarshan-koirala/prompt-vs-context-vs-harness-engineering-the-three-layers-around-every-ai-model-b31628b55845' },
-  { title: 'Claude Tag: How Anthropic Wants You to Put Claude to Work Right Inside Slack', date: new Date('2026-06-26'), url: 'https://medium.com/@sudarshan-koirala/claude-tag-how-anthropic-wants-you-to-put-claude-to-work-right-inside-slack-05a90a82dc29' },
-  { title: 'Loop Engineering: The New Hype', date: new Date('2026-06-24'), url: 'https://medium.com/@sudarshan-koirala/loop-engineering-the-new-hype-841beb68814d' },
-  { title: 'Amazon Bedrock AgentCore Gateway: One Door for All Your MCP Servers', date: new Date('2026-06-21'), url: 'https://medium.com/@sudarshan-koirala/amazon-bedrock-agentcore-gateway-one-door-for-all-your-mcp-servers-c1de1d68a85f' },
-  { title: 'ParseBench from LlamaIndex: How to Actually Test if Your Document Parser Is Agent-Ready', date: new Date('2026-06-20'), url: 'https://medium.com/@sudarshan-koirala/parsebench-from-llamaindex-how-to-actually-test-if-your-document-parser-is-agent-ready-d164b0341850' },
-  { title: 'Forward Deployed Engineer: The Hottest Job in AI, Explained', date: new Date('2026-06-19'), url: 'https://medium.com/@sudarshan-koirala/forward-deployed-engineer-the-hottest-job-in-ai-explained-0650a03320b3' },
-  { title: 'What Does “OpenAI API Compatible” Actually Mean?', date: new Date('2026-06-17'), url: 'https://medium.com/@sudarshan-koirala/what-does-openai-api-compatible-actually-mean-aedfdf35e601' },
-  { title: 'Databricks Data + AI Summit 2026: Every Big Announcement, Explained Simply', date: new Date('2026-06-16'), url: 'https://medium.com/@sudarshan-koirala/databricks-data-ai-summit-2026-every-big-announcement-explained-simply-e5b613c3abc1' },
-  { title: 'OpenAPI & Swagger for Complete Beginners', date: new Date('2026-06-14'), url: 'https://medium.com/@sudarshan-koirala/openapi-swagger-for-complete-beginners-4b9d38157369' },
-];
+const posts = await getAllPosts();
+const categories = ['All', ...Array.from(new Set(posts.map((p) => p.category)))];
 ---
 
 <Base title="Blog" description="Articles about AI, Data Science, LLMs, Databricks, and developer tools by Sudarshan Koirala.">
-  <div class="container">
+  <div class="container-wide">
     <div class="page-header">
       <h1>Blog</h1>
-      <p>Thoughts on AI engineering, data science, LLMs, and tools I use every day.</p>
+      <p>
+        Writing on AI engineering, data science, LLMs, and the tools I use every day —
+        here and on <a href="https://medium.com/@sudarshan-koirala" target="_blank" rel="noopener">Medium</a>.
+      </p>
     </div>
 
-    {posts.length > 0 && (
-      <ul class="post-list">
-        {posts.map((post) => (
-          <li class="post-item">
-            <h2 class="post-item-title">
-              <a href={`/blog/${post.id}`}>{post.data.title}</a>
-            </h2>
-            <p class="post-item-meta">{formatDate(post.data.date)}</p>
-            <p class="post-item-desc">{post.data.description}</p>
-            {post.data.tags.length > 0 && (
-              <div class="tags">
-                {post.data.tags.map((tag: string) => (
-                  <span class="tag">{tag}</span>
-                ))}
-              </div>
-            )}
-          </li>
-        ))}
-      </ul>
-    )}
+    <div class="filter-bar" role="tablist">
+      {categories.map((cat, i) => (
+        <button class:list={['filter-chip', { 'is-active': i === 0 }]} data-filter={cat}>
+          {cat}
+        </button>
+      ))}
+    </div>
 
-    <section class="section">
-      <h2 class="section-title">Latest on Medium</h2>
-      <p style="color:var(--muted); margin-bottom:1.25rem;">
-        Recent articles from
-        <a href="https://medium.com/@sudarshan-koirala" target="_blank" rel="noopener">medium.com/@sudarshan-koirala</a>.
-      </p>
-      <ul class="post-list">
-        {mediumPosts.map((post) => (
-          <li class="post-item">
-            <h2 class="post-item-title">
-              <a href={post.url} target="_blank" rel="noopener">{post.title}</a>
-            </h2>
-            <p class="post-item-meta">{formatDate(post.date)} · Medium</p>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <div class="card-grid" id="post-grid">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
   </div>
 </Base>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('.filter-chip');
+  const cards = document.querySelectorAll<HTMLElement>('#post-grid .post-card');
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const filter = chip.dataset.filter;
+      chips.forEach((c) => c.classList.toggle('is-active', c === chip));
+      cards.forEach((card) => {
+        const show = filter === 'All' || card.dataset.category === filter;
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+</script>
