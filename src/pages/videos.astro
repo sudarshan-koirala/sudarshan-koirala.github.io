@@ -1,22 +1,25 @@
 ---
 import Base from '../layouts/Base.astro';
 
-const playlists = [
-  {
-    title: '30 Days of Databricks',
-    desc: 'Complete beginner-to-advanced Databricks series. Covers setup, data loading, transformations, ML, and more.',
-    id: 'PLiWgLy3FjFv4iq4SsBXVAiLe7lbtYfOcd',
-  },
-  {
-    title: 'LangChain & LLM Apps',
-    desc: 'Building real applications with LangChain, LlamaIndex, RAG, and various LLM APIs.',
-    id: 'PLiWgLy3FjFv5oVpMJMKimxGCj_1KxlnDi',
-  },
-  {
-    title: 'AI Tools & Developer Workflows',
-    desc: 'Hands-on tutorials on Claude Code, KIRO, GitHub Copilot, OpenCode, and modern dev tools.',
-    id: 'PLiWgLy3FjFv6JBsdxED8PVzw_8TveNh-9',
-  },
+// Featured playlist
+const featuredPlaylist = {
+  title: 'Databricks Free Edition',
+  desc: 'Hands-on tutorials using the Databricks Free Edition — get started with the Lakehouse, notebooks, and AI features at no cost.',
+  id: 'PLz-qytj7eIWWRz_1hFSleVBwZAoD1eTqU',
+};
+
+// Latest 10 uploads from @datasciencebasics
+const latestVideos = [
+  { id: 'h_9ix0IJ96g', title: 'One Layer Over Claude Code, Codex and More: Omnigent Deep Dive from Databricks' },
+  { id: 'o2Mo0j1WIOo', title: 'I Asked Claude to Build My Content Dashboard. It Updates Itself' },
+  { id: 'Q-LvBm1Nnfc', title: 'Stop Using Slow PDF Parsers | LiteParse v2.0 (Rust) Tutorial' },
+  { id: 'sHQx7JS0I2Q', title: 'MLflow for AI Agents: The Open Source Tool Every Builder Should Know' },
+  { id: 'q7vwfBbx9Wk', title: 'Databricks AI Dev Kit + Claude Code: Vibe Coding' },
+  { id: 'zPY0bjGrSc4', title: 'Claude Code For Complete Beginners | Here’s How To Get Started (2026)' },
+  { id: 'lo7dwAscLdE', title: 'Databricks Genie Explained: Databricks One Renamed, UI Tour, Chat vs Ask & Scheduled Tasks (2026)' },
+  { id: 'O5OoifJoGmM', title: 'Kiro Powers for Beginners - Step by Step Guide' },
+  { id: 'CWVcA2K-P4c', title: 'Claude Design for Beginners 2026 - Complete Guide' },
+  { id: 'a1EIi9BM3b0', title: 'KIRO For Dummies: The Complete Beginner’s Guide (Install → Build → Powers)' },
 ];
 ---
 
@@ -32,22 +35,42 @@ const playlists = [
     </div>
 
     <section class="section" style="padding-top:1rem;">
-      <h2 class="section-title">Featured Playlists</h2>
-      {playlists.map((pl) => (
-        <div style="margin-bottom: 2.5rem;">
-          <h3 style="font-size:1.15rem; margin-bottom:0.3rem;">{pl.title}</h3>
-          <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1rem;">{pl.desc}</p>
-          <div class="video-embed">
-            <iframe
-              src={`https://www.youtube.com/embed/videoseries?list=${pl.id}`}
-              title={pl.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      <h2 class="section-title">Featured Playlist</h2>
+      <h3 style="font-size:1.15rem; margin-bottom:0.3rem;">{featuredPlaylist.title}</h3>
+      <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1rem;">{featuredPlaylist.desc}</p>
+      <div class="video-embed">
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/videoseries?list=${featuredPlaylist.id}`}
+          title={featuredPlaylist.title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          loading="lazy"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <p style="margin-top:0.75rem;">
+        <a href={`https://www.youtube.com/playlist?list=${featuredPlaylist.id}`} target="_blank" rel="noopener">
+          View full playlist on YouTube →
+        </a>
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Latest Videos</h2>
+      <div class="card-grid">
+        {latestVideos.map((v) => (
+          <a class="card video-card" href={`https://www.youtube.com/watch?v=${v.id}`} target="_blank" rel="noopener">
+            <img
+              class="video-thumb"
+              src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
+              alt={v.title}
               loading="lazy"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
-      ))}
+              width="480"
+              height="360"
+            />
+            <h3 class="card-title">{v.title}</h3>
+          </a>
+        ))}
+      </div>
     </section>
 
     <div class="cta-banner">
