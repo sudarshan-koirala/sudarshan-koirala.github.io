@@ -23,7 +23,7 @@ const siteName = 'Sudarshan Koirala';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -95,7 +95,16 @@ const siteName = 'Sudarshan Koirala';
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <script is:inline>
+    (() => {
+      const storedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
 
   <!-- Sitemap -->
   <link rel="sitemap" href="/sitemap-index.xml" />
@@ -103,12 +112,18 @@ const siteName = 'Sudarshan Koirala';
 <body>
   <header class="site-header">
     <div class="container-wide">
-      <a href="/" class="site-logo">SK</a>
+      <a href="/" class="site-logo" aria-label="Sudarshan Koirala home">Sudarshan Koirala</a>
       <nav class="site-nav">
         <a href="/blog">Blog</a>
         <a href="/videos">Videos</a>
         <a href="/about">About</a>
+        <a href="/resume">Resume</a>
+        <a href="/cv">CV</a>
       </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" data-theme-toggle>
+        <span class="theme-icon theme-icon-light" aria-hidden="true">☀</span>
+        <span class="theme-icon theme-icon-dark" aria-hidden="true">☾</span>
+      </button>
     </div>
   </header>
 
@@ -128,5 +143,24 @@ const siteName = 'Sudarshan Koirala';
       </div>
     </div>
   </footer>
+
+  <script is:inline>
+    (() => {
+      const button = document.querySelector('[data-theme-toggle]');
+      if (!button) return;
+
+      const setTheme = (theme) => {
+        document.documentElement.dataset.theme = theme;
+        localStorage.setItem('theme', theme);
+        button.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      };
+
+      setTheme(document.documentElement.dataset.theme || 'light');
+      button.addEventListener('click', () => {
+        const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        setTheme(nextTheme);
+      });
+    })();
+  </script>
 </body>
 </html>

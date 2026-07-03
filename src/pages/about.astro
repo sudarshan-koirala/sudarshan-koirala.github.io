@@ -2,169 +2,244 @@
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="About" description="Sudarshan Koirala — Senior GenAI Engineer at KONE, content creator, and AI educator based in Finland.">
-  <div class="container">
-    <div class="page-header">
-      <h1>About</h1>
+<Base title="About" description="Sudarshan Koirala — Senior GenAI Engineer at KONE, former Data Scientist at KONE, content creator, and AI educator based in Finland.">
+  <div class="container-wide">
+    <div class="about-layout">
+      <aside class="about-toc" aria-label="Table of contents">
+        <div class="toc-title">Table of contents</div>
+        <a href="#profile">Profile</a>
+        <a href="#work">Work</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </aside>
+
+      <article class="about-main">
+        <header class="page-header about-header">
+          <p class="eyebrow">Short bio and expertise</p>
+          <h1>About</h1>
+        </header>
+
+        <section id="profile" class="section about-intro" style="padding-top:0;">
+          <img src="/profile.png" alt="Sudarshan Koirala" class="about-photo" width="136" height="136" />
+          <div>
+            <p>
+              I am Sudarshan Koirala, a Senior GenAI Engineer at
+              <a href="https://www.kone.com" target="_blank" rel="noopener">KONE</a>
+              in Espoo, Finland. My work focuses on enterprise generative AI, MLOps,
+              data platforms, and practical AI systems that move from prototype to production.
+            </p>
+            <p>
+              Before my current Senior GenAI Engineer role, I worked as a Data Scientist at KONE,
+              building machine learning and data science solutions across industrial and enterprise contexts.
+              Earlier, I worked with Nokia Solutions and Networks on NLP and deep learning projects.
+            </p>
+            <p>
+              I also run
+              <a href="https://www.youtube.com/@datasciencebasics" target="_blank" rel="noopener">Data Science Basics</a>
+              on YouTube, where I teach AI, data science, LLMs, Databricks, and developer tools in a simple,
+              practical way. I write on
+              <a href="https://medium.com/@sudarshan-koirala" target="_blank" rel="noopener">Medium</a>
+              and share projects on
+              <a href="https://github.com/sudarshan-koirala" target="_blank" rel="noopener">GitHub</a>.
+            </p>
+            <p class="doc-callout">Check out my Resume and CV here:</p>
+            <div class="doc-links" aria-label="Resume and CV links">
+              <a href="/resume">
+                <span class="button-icon icon-resume" aria-hidden="true"></span>
+                <span>Resume</span>
+              </a>
+              <a href="/cv">
+                <span class="button-icon icon-cv" aria-hidden="true"></span>
+                <span>CV</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section id="work" class="section">
+          <h2 class="section-title">Work</h2>
+          <p>
+            I focus on two connected areas:
+          </p>
+          <ol class="about-list">
+            <li>
+              Building enterprise AI and ML systems with cloud platforms, LLMs, orchestration,
+              evaluation, observability, and MLOps practices.
+            </li>
+            <li>
+              Teaching AI and data science through tutorials, articles, and examples that help developers
+              and analysts apply modern tools without unnecessary complexity.
+            </li>
+          </ol>
+
+          <div class="timeline-item">
+            <div class="timeline-role">Senior GenAI Engineer</div>
+            <div class="timeline-company">KONE Oyj</div>
+            <div class="timeline-dates">Current role · Espoo, Finland</div>
+            <p class="timeline-desc">
+              Leading development of AI/ML-driven generative AI solutions. Designing automated workflows
+              for ML solutions, setting up SRE practices, prototyping with LLMs, and guiding data science
+              teams on MLOps best practices across AWS, Azure OpenAI, Databricks, and enterprise AI platforms.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-role">Data Scientist</div>
+            <div class="timeline-company">KONE Oyj</div>
+            <div class="timeline-dates">Earlier KONE role · Espoo, Finland</div>
+            <p class="timeline-desc">
+              Built data science and machine learning solutions at KONE before moving into the Senior GenAI
+              Engineer role, applying Python, SQL, cloud tooling, and ML workflows to enterprise use cases.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-role">Thesis Worker -> Machine Learning Trainee</div>
+            <div class="timeline-company">Nokia Solutions and Networks Oyj</div>
+            <div class="timeline-dates">2020 - 2021</div>
+            <p class="timeline-desc">
+              Worked on NLP-based event discovery from social media feeds using spaCy and pre-trained models,
+              implemented deep neural networks for tabular data, and served as scrum master for a team of 15 trainees.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-role">Content Creator</div>
+            <div class="timeline-company">Data Science Basics</div>
+            <div class="timeline-dates">2022 - Present</div>
+            <p class="timeline-desc">
+              Creating practical tutorials on AI, data science, Databricks, LLMs, and developer tools, including
+              series on Databricks, LangChain, LlamaIndex, AI coding tools, and modern agent workflows.
+            </p>
+          </div>
+        </section>
+
+        <section id="expertise" class="section">
+          <h2 class="section-title">Expertise</h2>
+          <div class="expertise-grid">
+            <div>
+              <h3>Enterprise AI</h3>
+              <p>
+                Generative AI systems, RAG, LLM prototyping, production workflows, enterprise evaluation,
+                and applied AI engineering.
+              </p>
+            </div>
+            <div>
+              <h3>Data Platforms</h3>
+              <p>
+                Databricks, Spark, SQL, AWS, Azure, MLflow, orchestration, and cloud-native data science workflows.
+              </p>
+            </div>
+            <div>
+              <h3>MLOps</h3>
+              <p>
+                Automated ML workflows, CI/CD, model tracking, deployment practices, monitoring, reliability,
+                and team enablement.
+              </p>
+            </div>
+            <div>
+              <h3>Education</h3>
+              <p>
+                Practical teaching through YouTube, Medium, and hands-on tutorials for AI, LLMs, and data science tools.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="education" class="section">
+          <h2 class="section-title">Education</h2>
+
+          <div class="timeline-item">
+            <div class="timeline-role">M.Sc. (Technology), Computer Science</div>
+            <div class="timeline-company">Aalto University</div>
+            <div class="timeline-dates">2021 · Major: Big Data and Large-Scale Fundamentals · Minor: ML, DS & AI · GPA 5/5</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-role">B.Eng., Software Engineering</div>
+            <div class="timeline-company">Metropolia University of Applied Sciences</div>
+            <div class="timeline-dates">2018</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-role">B.Sc., Physics</div>
+            <div class="timeline-company">Tribhuvan University, Nepal</div>
+            <div class="timeline-dates">2010</div>
+          </div>
+        </section>
+
+        <section id="skills" class="section">
+          <h2 class="section-title">Skills</h2>
+
+          <div class="skill-group">
+            <div class="skill-group-title">Languages & Core</div>
+            <div class="skill-pills">
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">SQL</span>
+              <span class="skill-pill">PySpark</span>
+              <span class="skill-pill">JavaScript</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title">AI / ML / LLMs</div>
+            <div class="skill-pills">
+              <span class="skill-pill">LangChain</span>
+              <span class="skill-pill">LlamaIndex</span>
+              <span class="skill-pill">RAG</span>
+              <span class="skill-pill">Azure OpenAI</span>
+              <span class="skill-pill">Amazon Bedrock</span>
+              <span class="skill-pill">PyTorch</span>
+              <span class="skill-pill">MLflow</span>
+              <span class="skill-pill">XGBoost</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title">Data & Cloud</div>
+            <div class="skill-pills">
+              <span class="skill-pill">Databricks</span>
+              <span class="skill-pill">AWS</span>
+              <span class="skill-pill">Azure</span>
+              <span class="skill-pill">Apache Spark</span>
+              <span class="skill-pill">Docker</span>
+              <span class="skill-pill">GitLab CI</span>
+              <span class="skill-pill">Terraform</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title">Languages</div>
+            <div class="skill-pills">
+              <span class="skill-pill">English (fluent)</span>
+              <span class="skill-pill">Nepalese (native)</span>
+              <span class="skill-pill">Finnish (beginner)</span>
+              <span class="skill-pill">Hindi (satisfactory)</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="section">
+          <h2 class="section-title">Contact</h2>
+          <p>
+            For business inquiries:
+            <a href="mailto:basicsdatascience@gmail.com">basicsdatascience@gmail.com</a>
+          </p>
+          <p>
+            For consulting:
+            <a href="https://topmate.io/sudarshan_koirala" target="_blank" rel="noopener">topmate.io/sudarshan_koirala</a>
+          </p>
+          <div class="hero-links compact-links">
+            <a href="https://sudarshan-koirala.github.io" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.linkedin.com/in/sudarshan-koirala/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/sudarshan-koirala" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://twitter.com/mesudarshan" target="_blank" rel="noopener">Twitter/X</a>
+            <a href="https://www.youtube.com/@datasciencebasics" target="_blank" rel="noopener">YouTube</a>
+          </div>
+        </section>
+      </article>
     </div>
-
-    <section class="section" style="padding-top:0;">
-      <p>
-        I'm Sudarshan Koirala, a Senior GenAI Engineer at
-        <a href="https://www.kone.com" target="_blank" rel="noopener">KONE</a>
-        in Espoo, Finland. I lead the development of AI/ML-driven generative AI solutions,
-        design automated ML workflows, and guide teams towards MLOps best practices.
-      </p>
-      <p>
-        Outside work, I run
-        <a href="https://www.youtube.com/@datasciencebasics" target="_blank" rel="noopener">Data Science Basics</a>
-        on YouTube, where I teach AI, Data Science, LLMs, and developer tools in the simplest way possible.
-        I also write on <a href="https://medium.com/@sudarshan-koirala" target="_blank" rel="noopener">Medium</a>
-        and share code on <a href="https://github.com/sudarshan-koirala" target="_blank" rel="noopener">GitHub</a>.
-      </p>
-    </section>
-
-    <!-- Experience -->
-    <section class="section">
-      <h2 class="section-title">Experience</h2>
-
-      <div class="timeline-item">
-        <div class="timeline-role">Senior GenAI Engineer</div>
-        <div class="timeline-company">KONE Oyj</div>
-        <div class="timeline-dates">2022 – Present · Espoo, Finland</div>
-        <p class="timeline-desc">
-          Leading development of AI/ML-driven generative AI solutions. Designing automated workflows
-          for ML solutions, setting up SRE practices, prototyping with LLMs, and guiding Data Science
-          teams on MLOps best practices. Working across AWS (Bedrock, SageMaker, Step Functions),
-          Azure OpenAI, Databricks, and enterprise AI platforms.
-        </p>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-role">Thesis Worker → Machine Learning Trainee</div>
-        <div class="timeline-company">Nokia Solutions and Networks Oyj</div>
-        <div class="timeline-dates">2020 – 2021</div>
-        <p class="timeline-desc">
-          NLP-based event discovery from social media feeds using spaCy and pre-trained models.
-          End-to-end deep neural network implementations for tabular data. Scrum master for a team of 15 trainees.
-        </p>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-role">Content Creator</div>
-        <div class="timeline-company">Data Science Basics (YouTube)</div>
-        <div class="timeline-dates">2022 – Present</div>
-        <p class="timeline-desc">
-          Creating practical video tutorials on AI, Data Science, Databricks, LLMs, and developer tools.
-          Series include "30 Days of Databricks", LangChain/LlamaIndex walkthroughs, and AI tool reviews.
-        </p>
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section class="section">
-      <h2 class="section-title">Education</h2>
-
-      <div class="timeline-item">
-        <div class="timeline-role">M.Sc. (Technology), Computer Science</div>
-        <div class="timeline-company">Aalto University</div>
-        <div class="timeline-dates">2021 · Major: Big Data and Large-Scale Fundamentals · Minor: ML, DS & AI (GPA 5/5)</div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-role">B.Eng., Software Engineering</div>
-        <div class="timeline-company">Metropolia University of Applied Sciences</div>
-        <div class="timeline-dates">2018</div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-role">B.Sc., Physics</div>
-        <div class="timeline-company">Tribhuvan University, Nepal</div>
-        <div class="timeline-dates">2010</div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section class="section">
-      <h2 class="section-title">Skills & Tools</h2>
-
-      <div class="skill-group">
-        <div class="skill-group-title">Languages & Core</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">SQL</span>
-          <span class="skill-pill">PySpark</span>
-          <span class="skill-pill">JavaScript</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <div class="skill-group-title">AI / ML / LLMs</div>
-        <div class="skill-pills">
-          <span class="skill-pill">LangChain</span>
-          <span class="skill-pill">LlamaIndex</span>
-          <span class="skill-pill">RAG</span>
-          <span class="skill-pill">Azure OpenAI</span>
-          <span class="skill-pill">Amazon Bedrock</span>
-          <span class="skill-pill">PyTorch</span>
-          <span class="skill-pill">MLflow</span>
-          <span class="skill-pill">XGBoost</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <div class="skill-group-title">Data & Cloud</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Databricks</span>
-          <span class="skill-pill">AWS</span>
-          <span class="skill-pill">Azure</span>
-          <span class="skill-pill">Apache Spark</span>
-          <span class="skill-pill">Docker</span>
-          <span class="skill-pill">GitLab CI</span>
-          <span class="skill-pill">Terraform</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <div class="skill-group-title">Dev Tools</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Claude Code</span>
-          <span class="skill-pill">GitHub Copilot</span>
-          <span class="skill-pill">KIRO</span>
-          <span class="skill-pill">Git</span>
-          <span class="skill-pill">Linux</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <div class="skill-group-title">Languages</div>
-        <div class="skill-pills">
-          <span class="skill-pill">English (fluent)</span>
-          <span class="skill-pill">Nepalese (native)</span>
-          <span class="skill-pill">Finnish (beginner)</span>
-          <span class="skill-pill">Hindi (satisfactory)</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="section">
-      <h2 class="section-title">Get in Touch</h2>
-      <p>
-        For business inquiries:
-        <a href="mailto:basicsdatascience@gmail.com">basicsdatascience@gmail.com</a>
-      </p>
-      <p>
-        For consulting:
-        <a href="https://topmate.io/sudarshan_koirala" target="_blank" rel="noopener">topmate.io/sudarshan_koirala</a>
-      </p>
-      <div class="hero-links" style="margin-top: 1rem;">
-        <a href="https://sudarshan-koirala.github.io" target="_blank" rel="noopener">Website</a>
-        <a href="https://www.linkedin.com/in/sudarshan-koirala/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/sudarshan-koirala" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://twitter.com/mesudarshan" target="_blank" rel="noopener">Twitter/X</a>
-        <a href="https://www.youtube.com/@datasciencebasics" target="_blank" rel="noopener">YouTube</a>
-      </div>
-    </section>
   </div>
 </Base>
