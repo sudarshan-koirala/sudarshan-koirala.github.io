@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+
+const playlists = [
+  {
+    title: '30 Days of Databricks',
+    desc: 'Complete beginner-to-advanced Databricks series. Covers setup, data loading, transformations, ML, and more.',
+    id: 'PLiWgLy3FjFv4iq4SsBXVAiLe7lbtYfOcd',
+  },
+  {
+    title: 'LangChain & LLM Apps',
+    desc: 'Building real applications with LangChain, LlamaIndex, RAG, and various LLM APIs.',
+    id: 'PLiWgLy3FjFv5oVpMJMKimxGCj_1KxlnDi',
+  },
+  {
+    title: 'AI Tools & Developer Workflows',
+    desc: 'Hands-on tutorials on Claude Code, KIRO, GitHub Copilot, OpenCode, and modern dev tools.',
+    id: 'PLiWgLy3FjFv6JBsdxED8PVzw_8TveNh-9',
+  },
+];
+---
+
+<Base title="Videos" description="YouTube tutorials on AI, Data Science, Databricks, LLMs, and developer tools by Sudarshan Koirala.">
+  <div class="container">
+    <div class="page-header">
+      <h1>Videos</h1>
+      <p>
+        Practical tutorials on my YouTube channel
+        <a href="https://www.youtube.com/@datasciencebasics" target="_blank" rel="noopener">@datasciencebasics</a>.
+        Subscribe to stay updated.
+      </p>
+    </div>
+
+    <section class="section" style="padding-top:1rem;">
+      <h2 class="section-title">Featured Playlists</h2>
+      {playlists.map((pl) => (
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="font-size:1.15rem; margin-bottom:0.3rem;">{pl.title}</h3>
+          <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1rem;">{pl.desc}</p>
+          <div class="video-embed">
+            <iframe
+              src={`https://www.youtube.com/embed/videoseries?list=${pl.id}`}
+              title={pl.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <div class="cta-banner">
+      <p><strong>More videos on the channel</strong><br/>
+        New tutorials every week on AI, Data Science, and developer tools.</p>
+      <a href="https://www.youtube.com/@datasciencebasics?sub_confirmation=1" target="_blank" rel="noopener">
+        Subscribe on YouTube
+      </a>
+    </div>
+  </div>
+</Base>

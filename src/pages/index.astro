@@ -1,0 +1,126 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 6);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+---
+
+<Base title="Sudarshan Koirala — Senior GenAI Engineer & Content Creator">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <h1>Sudarshan Koirala</h1>
+          <p class="hero-tagline">
+            Senior GenAI Engineer at <strong>KONE</strong>. I build enterprise AI solutions
+            and teach data science, LLMs, and developer tools on
+            <a href="https://www.youtube.com/@datasciencebasics" target="_blank" rel="noopener">YouTube</a>.
+          </p>
+          <div class="hero-links">
+            <a href="https://www.youtube.com/@datasciencebasics" target="_blank" rel="noopener">
+              ▶ YouTube
+            </a>
+            <a href="https://www.linkedin.com/in/sudarshan-koirala/" target="_blank" rel="noopener">
+              in LinkedIn
+            </a>
+            <a href="https://github.com/sudarshan-koirala" target="_blank" rel="noopener">
+              ⌘ GitHub
+            </a>
+            <a href="https://medium.com/@sudarshan-koirala" target="_blank" rel="noopener">
+              ✎ Medium
+            </a>
+            <a href="https://topmate.io/sudarshan_koirala" target="_blank" rel="noopener">
+              💼 Consulting
+            </a>
+          </div>
+        </div>
+        <!-- Replace with your photo: put it in /public/photo.jpg -->
+        <!--<img src="/photo.jpg" alt="Sudarshan Koirala" class="hero-photo" />-->
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Posts -->
+  {posts.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Latest Articles</h2>
+        <div class="card-grid">
+          {posts.map((post) => (
+            <article class="card">
+              <h3 class="card-title">
+                <a href={`/blog/${post.id}`}>{post.data.title}</a>
+              </h3>
+              <p class="card-meta">{formatDate(post.data.date)}</p>
+              <p class="card-desc">{post.data.description}</p>
+              {post.data.tags.length > 0 && (
+                <div class="tags">
+                  {post.data.tags.map((tag: string) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+        {posts.length >= 6 && (
+          <p style="text-align:center; margin-top:2rem;">
+            <a href="/blog">View all articles →</a>
+          </p>
+        )}
+      </div>
+    </section>
+  )}
+
+  <!-- Featured YouTube -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Featured Videos</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3 class="card-title">30 Days of Databricks</h3>
+          <p class="card-desc">A complete beginner-to-advanced playlist covering Databricks fundamentals with hands-on examples.</p>
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/videoseries?list=PLiWgLy3FjFv4iq4SsBXVAiLe7lbtYfOcd"
+              title="30 Days of Databricks"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Latest from the Channel</h3>
+          <p class="card-desc">AI tools, LLMs, Databricks, Claude Code, KIRO, and practical developer workflows — explained simply.</p>
+          <div style="text-align:center; padding: 2rem 0;">
+            <a href="https://www.youtube.com/@datasciencebasics" target="_blank" rel="noopener"
+               style="display:inline-block; background:var(--accent); color:#fff; padding:0.6rem 1.5rem; border-radius:6px; font-weight:600; font-size:0.9rem;">
+              Visit the Channel →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner">
+        <p><strong>Want to learn AI and Data Science the simple way?</strong><br/>
+          Subscribe to Data Science Basics on YouTube — practical tutorials, no fluff.</p>
+        <a href="https://www.youtube.com/@datasciencebasics?sub_confirmation=1" target="_blank" rel="noopener">
+          Subscribe on YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

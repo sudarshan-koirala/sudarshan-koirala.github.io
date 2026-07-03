@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+---
+
+<Base title="Blog" description="Articles about AI, Data Science, LLMs, Databricks, and developer tools by Sudarshan Koirala.">
+  <div class="container">
+    <div class="page-header">
+      <h1>Blog</h1>
+      <p>Thoughts on AI engineering, data science, LLMs, and tools I use every day.</p>
+    </div>
+
+    {posts.length === 0 ? (
+      <p style="color:var(--muted); padding: 2rem 0;">
+        No posts yet. Check back soon, or read my articles on
+        <a href="https://medium.com/@sudarshan-koirala" target="_blank" rel="noopener">Medium</a>.
+      </p>
+    ) : (
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li class="post-item">
+            <h2 class="post-item-title">
+              <a href={`/blog/${post.id}`}>{post.data.title}</a>
+            </h2>
+            <p class="post-item-meta">{formatDate(post.data.date)}</p>
+            <p class="post-item-desc">{post.data.description}</p>
+            {post.data.tags.length > 0 && (
+              <div class="tags">
+                {post.data.tags.map((tag: string) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</Base>
