@@ -3,41 +3,161 @@ import Base from '../layouts/Base.astro';
 import PostCard from '../components/PostCard.astro';
 import { getAllPosts } from '../data/posts';
 
-const posts = (await getAllPosts()).slice(0, 6);
+const posts = (await getAllPosts()).slice(0, 3);
+
+const focusAreas = [
+  {
+    title: 'Enterprise GenAI',
+    text: 'Production-oriented LLM applications, RAG, workflow automation, evaluation, and reliability practices for enterprise teams.',
+  },
+  {
+    title: 'Data & ML Platforms',
+    text: 'Databricks, Spark, Python, SQL, MLflow, cloud services, and the engineering practices that move models from notebooks to operations.',
+  },
+  {
+    title: 'AI Education',
+    text: 'Practical tutorials and articles that explain AI, data science, developer tools, and agent workflows without unnecessary complexity.',
+  },
+];
+
+const channels = [
+  {
+    label: 'YouTube',
+    title: 'Data Science Basics',
+    text: 'Hands-on videos covering AI, Databricks, LLMs, agents, and modern developer tools.',
+    href: 'https://www.youtube.com/@datasciencebasics',
+  },
+  {
+    label: 'Medium',
+    title: 'Articles and explainers',
+    text: 'Written breakdowns of AI engineering patterns, data platforms, LLM tools, and emerging workflows.',
+    href: 'https://medium.com/@sudarshan-koirala',
+  },
+  {
+    label: 'GitHub',
+    title: 'Code and experiments',
+    text: 'Public projects, examples, and technical work shared for developers learning applied AI.',
+    href: 'https://github.com/sudarshan-koirala',
+  },
+];
 ---
 
-<Base title="Sudarshan Koirala — Senior GenAI Engineer & Content Creator">
-  <!-- Hero -->
+<Base
+  title="Sudarshan Koirala - Senior GenAI Engineer, AI Educator, and Creator"
+  description="Sudarshan Koirala is a Senior GenAI Engineer at KONE, creator of Data Science Basics, and writer on AI, Databricks, LLMs, MLOps, and developer tools."
+>
   <section class="hero">
     <div class="container-wide">
       <div class="hero-inner">
         <div class="hero-text">
+          <p class="eyebrow">Senior GenAI Engineer · AI educator · Creator</p>
           <h1>Sudarshan Koirala</h1>
           <p class="hero-tagline">
-            Senior GenAI Engineer at <strong>KONE</strong>. I build enterprise AI solutions
-            and teach data science, LLMs, and developer tools on
-            <a href="https://www.youtube.com/@datasciencebasics" target="_blank" rel="noopener">YouTube</a>.
+            I build enterprise AI systems at <strong>KONE</strong> and create practical learning
+            material for people working with data science, LLMs, Databricks, and modern developer tools.
           </p>
+          <div class="hero-actions">
+            <a class="button-primary" href="/about">View profile</a>
+            <a class="button-secondary" href="/resume">Resume</a>
+          </div>
           <div class="hero-links">
-            <a href="https://www.youtube.com/@datasciencebasics" target="_blank" rel="noopener">▶ YouTube</a>
-            <a href="https://www.linkedin.com/in/sudarshan-koirala/" target="_blank" rel="noopener">in LinkedIn</a>
-            <a href="https://github.com/sudarshan-koirala" target="_blank" rel="noopener">⌘ GitHub</a>
-            <a href="https://medium.com/@sudarshan-koirala" target="_blank" rel="noopener">✎ Medium</a>
-            <a href="https://topmate.io/sudarshan_koirala" target="_blank" rel="noopener">💼 Consulting</a>
+            <a href="https://www.linkedin.com/in/sudarshan-koirala/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://www.youtube.com/@datasciencebasics" target="_blank" rel="noopener">YouTube</a>
+            <a href="https://medium.com/@sudarshan-koirala" target="_blank" rel="noopener">Medium</a>
+            <a href="https://github.com/sudarshan-koirala" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://topmate.io/sudarshan_koirala" target="_blank" rel="noopener">Consulting</a>
           </div>
         </div>
-        <img src="/profile.png" alt="Sudarshan Koirala — Data Science Basics" class="hero-photo" width="160" height="160" />
+        <aside class="hero-profile" aria-label="Profile summary">
+          <img src="/profile.png" alt="Sudarshan Koirala" class="hero-photo" width="160" height="160" />
+          <div>
+            <span>Current role</span>
+            <strong>Senior GenAI Engineer, KONE</strong>
+          </div>
+          <div>
+            <span>Public work</span>
+            <strong>Data Science Basics, Medium, GitHub</strong>
+          </div>
+          <div>
+            <span>Location</span>
+            <strong>Espoo, Finland</strong>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
 
-  <!-- Latest Posts -->
+  <section class="section section-muted">
+    <div class="container-wide">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">What I do</p>
+          <h2 class="section-title-large">Enterprise AI work, explained in public.</h2>
+        </div>
+      </div>
+      <div class="feature-grid">
+        {focusAreas.map((area) => (
+          <article class="feature-card">
+            <h3>{area.title}</h3>
+            <p>{area.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-wide">
+      <div class="split-section">
+        <div>
+          <p class="eyebrow">Professional profile</p>
+          <h2 class="section-title-large">A single place for my work, writing, videos, and technical background.</h2>
+        </div>
+        <div>
+          <p>
+            My full-time work is focused on generative AI and machine learning systems in an enterprise
+            environment. Outside work, I publish tutorials and articles through Data Science Basics,
+            Medium, and GitHub for people who want practical guidance on applied AI.
+          </p>
+          <div class="inline-actions">
+            <a href="/cv">Read CV</a>
+            <a href="/videos">Watch videos</a>
+            <a href="/blog">Read articles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container-wide">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Public channels</p>
+          <h2 class="section-title-large">Where to follow the work</h2>
+        </div>
+      </div>
+      <div class="channel-grid">
+        {channels.map((channel) => (
+          <a class="channel-card" href={channel.href} target="_blank" rel="noopener">
+            <span>{channel.label}</span>
+            <h3>{channel.title}</h3>
+            <p>{channel.text}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   {posts.length > 0 && (
     <section class="section">
       <div class="container-wide">
         <div class="section-head">
-          <h2 class="section-title">Latest Articles</h2>
-          <a href="/blog" class="section-link">View all →</a>
+          <div>
+            <p class="eyebrow">Writing</p>
+            <h2 class="section-title-large">Recent articles</h2>
+          </div>
+          <a href="/blog" class="section-link">View all</a>
         </div>
         <div class="card-grid">
           {posts.map((post) => <PostCard post={post} />)}
@@ -46,12 +166,14 @@ const posts = (await getAllPosts()).slice(0, 6);
     </section>
   )}
 
-  <!-- Featured YouTube -->
-  <section class="section">
+  <section class="section section-muted">
     <div class="container-wide">
       <div class="section-head">
-        <h2 class="section-title">Featured Videos</h2>
-        <a href="/videos" class="section-link">All videos →</a>
+        <div>
+          <p class="eyebrow">Video tutorials</p>
+          <h2 class="section-title-large">Featured YouTube playlist</h2>
+        </div>
+        <a href="/videos" class="section-link">All videos</a>
       </div>
       <div class="video-embed">
         <iframe
@@ -65,15 +187,23 @@ const posts = (await getAllPosts()).slice(0, 6);
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="section">
     <div class="container-wide">
       <div class="cta-banner">
-        <p><strong>Want to learn AI and Data Science the simple way?</strong><br/>
-          Subscribe to Data Science Basics on YouTube — practical tutorials, no fluff.</p>
-        <a href="https://www.youtube.com/@datasciencebasics?sub_confirmation=1" target="_blank" rel="noopener">
-          Subscribe on YouTube
-        </a>
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Work with me or follow the public work</h2>
+          <p>
+            For business inquiries, consulting, tutorials, or professional background, use the links below.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <a href="mailto:basicsdatascience@gmail.com">Email</a>
+          <a href="https://topmate.io/sudarshan_koirala" target="_blank" rel="noopener">Consulting</a>
+          <a href="https://www.youtube.com/@datasciencebasics?sub_confirmation=1" target="_blank" rel="noopener">
+            Subscribe
+          </a>
+        </div>
       </div>
     </div>
   </section>

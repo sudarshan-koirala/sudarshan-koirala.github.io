@@ -4,12 +4,12 @@ import Base from '../layouts/Base.astro';
 // Featured playlist
 const featuredPlaylist = {
   title: 'Databricks Free Edition',
-  desc: 'Hands-on tutorials using the Databricks Free Edition — get started with the Lakehouse, notebooks, and AI features at no cost.',
+  desc: 'Hands-on tutorials using the Databricks Free Edition - get started with the Lakehouse, notebooks, and AI features at no cost.',
   id: 'PLz-qytj7eIWWRz_1hFSleVBwZAoD1eTqU',
 };
 
-// Latest 10 uploads from @datasciencebasics
-const latestVideos = [
+// Curated videos from @datasciencebasics. Keep this list explicit so the page is stable without a YouTube API key.
+const selectedVideos = [
   { id: 'h_9ix0IJ96g', title: 'One Layer Over Claude Code, Codex and More: Omnigent Deep Dive from Databricks' },
   { id: 'o2Mo0j1WIOo', title: 'I Asked Claude to Build My Content Dashboard. It Updates Itself' },
   { id: 'Q-LvBm1Nnfc', title: 'Stop Using Slow PDF Parsers | LiteParse v2.0 (Rust) Tutorial' },
@@ -19,7 +19,7 @@ const latestVideos = [
   { id: 'lo7dwAscLdE', title: 'Databricks Genie Explained: Databricks One Renamed, UI Tour, Chat vs Ask & Scheduled Tasks (2026)' },
   { id: 'O5OoifJoGmM', title: 'Kiro Powers for Beginners - Step by Step Guide' },
   { id: 'CWVcA2K-P4c', title: 'Claude Design for Beginners 2026 - Complete Guide' },
-  { id: 'a1EIi9BM3b0', title: 'KIRO For Dummies: The Complete Beginner’s Guide (Install → Build → Powers)' },
+  { id: 'a1EIi9BM3b0', title: 'KIRO For Dummies: The Complete Beginner’s Guide (Install - Build - Powers)' },
 ];
 ---
 
@@ -28,9 +28,9 @@ const latestVideos = [
     <div class="page-header">
       <h1>Videos</h1>
       <p>
-        Practical tutorials on my YouTube channel
-        <a href="https://www.youtube.com/@datasciencebasics" target="_blank" rel="noopener">@datasciencebasics</a>.
-        Subscribe to stay updated.
+        A curated selection of practical tutorials from my YouTube channel
+        <a href="https://www.youtube.com/@datasciencebasics" target="_blank" rel="noopener">@datasciencebasics</a>,
+        covering AI, data science, Databricks, LLMs, and developer tools.
       </p>
     </div>
 
@@ -49,15 +49,15 @@ const latestVideos = [
       </div>
       <p style="margin-top:0.75rem;">
         <a href={`https://www.youtube.com/playlist?list=${featuredPlaylist.id}`} target="_blank" rel="noopener">
-          View full playlist on YouTube →
+          View full playlist on YouTube
         </a>
       </p>
     </section>
 
     <section class="section">
-      <h2 class="section-title">Latest Videos</h2>
+      <h2 class="section-title">Selected Tutorials</h2>
       <div class="card-grid">
-        {latestVideos.map((v) => (
+        {selectedVideos.map((v) => (
           <a class="card video-card" href={`https://www.youtube.com/watch?v=${v.id}`} target="_blank" rel="noopener">
             <img
               class="video-thumb"
@@ -75,7 +75,7 @@ const latestVideos = [
 
     <div class="cta-banner">
       <p><strong>More videos on the channel</strong><br/>
-        New tutorials every week on AI, Data Science, and developer tools.</p>
+        Practical tutorials on AI, data science, and developer tools.</p>
       <a href="https://www.youtube.com/@datasciencebasics?sub_confirmation=1" target="_blank" rel="noopener">
         Subscribe on YouTube
       </a>

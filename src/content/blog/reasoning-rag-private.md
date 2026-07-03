@@ -1,6 +1,6 @@
 ---
-title: "Reasoning RAG — 100% Private"
-description: "Combining RAG with reasoning LLMs for more reliable, transparent document Q&A — fully private and local."
+title: "Reasoning RAG - 100% Private"
+description: "Combining RAG with reasoning LLMs for more reliable, transparent document Q&A - fully private and local."
 date: 2025-02-20
 tags: ["rag", "llm", "privacy", "ai"]
 youtube: ""

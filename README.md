@@ -28,7 +28,7 @@ draft: false
 Your content here. Standard markdown with code blocks, images, etc.
 ```
 
-Push to `main` → GitHub Actions builds and deploys automatically.
+Push to `main` - GitHub Actions builds and deploys automatically.
 
 ## Adding Your Photo
 
@@ -47,7 +47,7 @@ Push to `main` → GitHub Actions builds and deploys automatically.
 
 1. Create a repo named `sudarshan-koirala.github.io` on GitHub
 2. Push this project to `main`
-3. Go to repo **Settings → Pages → Source → GitHub Actions**
+3. Go to repo **Settings - Pages - Source - GitHub Actions**
 4. The workflow runs automatically on every push
 
 ## Project Structure

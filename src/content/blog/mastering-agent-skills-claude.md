@@ -1,6 +1,6 @@
 ---
 title: "Mastering Agent Skills for Data Science with Claude.ai"
-description: "Create reusable AI skills for Exploratory Data Analysis and Excel reporting — no coding required."
+description: "Create reusable AI skills for Exploratory Data Analysis and Excel reporting - no coding required."
 date: 2026-02-01
 tags: ["claude", "ai-tools", "data-science", "skills"]
 youtube: ""

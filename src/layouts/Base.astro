@@ -12,7 +12,7 @@ interface Props {
 const {
   title,
   description = 'Senior GenAI Engineer, content creator, and educator. Writing about AI, Data Science, Databricks, LLMs, and developer tools.',
-  image = '/og-default.png',
+  image = '/profile.png',
   article = false,
   publishDate,
 } = Astro.props;
@@ -101,7 +101,7 @@ const isActive = (href: string) => {
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=JetBrains+Mono:wght@400;500;600&family=Patrick+Hand&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Patrick+Hand&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <script is:inline>
     (() => {
@@ -118,7 +118,9 @@ const isActive = (href: string) => {
 <body>
   <header class="site-header">
     <div class="container-wide">
-      <a href="/" class="site-logo" aria-label="Sudarshan Koirala home">Sudarshan Koirala</a>
+      <a href="/" class="site-logo" aria-label="Sudarshan Koirala home">
+        <strong>Sudarshan Koirala</strong>
+      </a>
       <nav class="site-nav">
         <a href="/about" aria-current={isActive('/about') ? 'page' : undefined}>
           <span class="nav-icon nav-icon-about" aria-hidden="true"></span>
@@ -142,8 +144,8 @@ const isActive = (href: string) => {
         </a>
       </nav>
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode" data-theme-toggle>
-        <span class="theme-icon theme-icon-light" aria-hidden="true">☀</span>
-        <span class="theme-icon theme-icon-dark" aria-hidden="true">☾</span>
+        <span class="theme-icon theme-icon-light" aria-hidden="true">Light</span>
+        <span class="theme-icon theme-icon-dark" aria-hidden="true">Dark</span>
       </button>
     </div>
   </header>
