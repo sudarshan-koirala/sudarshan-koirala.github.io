@@ -5,8 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    # Rebuild every 6 hours (UTC) to pull in new YouTube videos and Medium posts.
-    - cron: '17 */6 * * *'
+    # Weekly content refresh - Saturday 20:00 UTC (~23:00 Sat Finland summer /
+    # ~22:00 winter). Pulls in new YouTube videos and Medium posts.
+    - cron: '0 20 * * 6'
 
 permissions:
   contents: read
