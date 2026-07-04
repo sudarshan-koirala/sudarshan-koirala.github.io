@@ -3,8 +3,11 @@ title: "The Databricks Genie Family, Explained"
 description: "Databricks Genie isn't one product - it's a family of AI assistants, each built for a different job. Here's a quick, friendly tour of who's who."
 date: 2026-07-04
 tags: ["databricks", "genie", "ai-tools", "data-analytics"]
+image: "/images/databricks-genies/cover.svg"
 youtube: ""
 ---
+
+![The Databricks Genie family cover](/images/databricks-genies/cover.svg)
 
 If you've been following Databricks lately, you've probably seen the word **Genie** everywhere - and it can get confusing fast. That's because "Genie" isn't a single feature. It's a whole *family* of AI assistants, each built for a different kind of user.
 
@@ -15,6 +18,8 @@ I came across a nice cheat-sheet by Ganesh Chandrasekaran called ["Meet the Data
 Before the family, there was just "Genie." It started life as **AI/BI Genie** - a way to talk to your data in plain English. You ask a question, Genie writes the SQL, runs it, and hands back a table or a chart. No SQL skills required. Alongside it, Databricks had the **Databricks Assistant**, the coding helper inside notebooks and the SQL editor.
 
 Over time, those grew into a proper lineup. Here's the cast.
+
+![The Genie family: four user-facing Genies grounded by Genie Ontology](/images/databricks-genies/family.svg)
 
 ## Genie One - the AI coworker for business users
 
@@ -46,13 +51,9 @@ Here's the simple mental model:
 - **Automating real work** → Genie Agents
 - **The shared brain that grounds them all** → Genie Ontology
 
+![Which Databricks Genie do I need?](/images/databricks-genies/cheatsheet.svg)
+
 One honest caveat: this space is moving *fast*, and the names and features change often. Treat this post as a snapshot, not gospel - always check the official [Databricks docs](https://docs.databricks.com/aws/en/genie/) for the latest.
-
-## Further reading
-
-- ["Meet the Databricks Genies"](https://medium.com/@gchandra/meet-the-databricks-genies-b0a45755b121) by Ganesh Chandrasekaran - the article that inspired this post
-- [Databricks AI/BI Genie docs](https://docs.databricks.com/aws/en/genie/)
-- [Databricks blog](https://www.databricks.com/blog)
 
 ---
 

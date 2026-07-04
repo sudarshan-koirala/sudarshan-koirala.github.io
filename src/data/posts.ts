@@ -7,6 +7,7 @@ const localCategory: Record<string, string> = {
   'kiro-for-beginners': 'AI Tools',
   'mastering-agent-skills-claude': 'AI Tools',
   'reasoning-rag-private': 'LLMs & RAG',
+  'databricks-genies-explained': 'Databricks',
 };
 
 const MEDIUM_FEED = 'https://medium.com/feed/@sudarshan-koirala';

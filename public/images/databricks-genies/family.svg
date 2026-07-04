@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680" role="img" aria-label="The Databricks Genie family: four user-facing Genies grounded by Genie Ontology">
+  <defs>
+    <linearGradient id="fbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0f1a"/>
+      <stop offset="1" stop-color="#12101a"/>
+    </linearGradient>
+    <linearGradient id="foundation" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#047857"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#fbg)"/>
+
+  <g font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif" text-anchor="middle">
+    <text x="600" y="70" fill="#f4f2ea" font-size="38" font-weight="800">The Genie family</text>
+    <text x="600" y="104" fill="#aaa7b6" font-size="19">One brand, five members &#8212; four you talk to, one that powers them all</text>
+  </g>
+
+  <!-- connectors from foundation to cards -->
+  <g stroke="#2b6f68" stroke-width="2.5" opacity="0.7">
+    <line x1="185" y1="470" x2="185" y2="512"/>
+    <line x1="461" y1="470" x2="461" y2="512"/>
+    <line x1="738" y1="470" x2="738" y2="512"/>
+    <line x1="1014" y1="470" x2="1014" y2="512"/>
+  </g>
+
+  <!-- four user-facing cards -->
+  <g font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif">
+    <!-- Genie One -->
+    <g>
+      <rect x="60" y="150" width="250" height="320" rx="16" fill="#171922" stroke="#2b2d36"/>
+      <rect x="60" y="150" width="250" height="6" rx="3" fill="#f97316"/>
+      <circle cx="100" cy="200" r="20" fill="#f97316" opacity="0.18"/>
+      <circle cx="100" cy="200" r="9" fill="#f97316"/>
+      <text x="88" y="262" fill="#f4f2ea" font-size="23" font-weight="700">Genie One</text>
+      <text x="88" y="292" fill="#8b93a7" font-size="15" font-weight="600">FOR BUSINESS USERS</text>
+      <text x="88" y="330" fill="#c9c6d4" font-size="16">The AI coworker for</text>
+      <text x="88" y="352" fill="#c9c6d4" font-size="16">everyone. Ask, search,</text>
+      <text x="88" y="374" fill="#c9c6d4" font-size="16">build, take action.</text>
+    </g>
+    <!-- Genie Spaces -->
+    <g>
+      <rect x="336" y="150" width="250" height="320" rx="16" fill="#171922" stroke="#2b2d36"/>
+      <rect x="336" y="150" width="250" height="6" rx="3" fill="#5eead4"/>
+      <circle cx="376" cy="200" r="20" fill="#5eead4" opacity="0.18"/>
+      <circle cx="376" cy="200" r="9" fill="#5eead4"/>
+      <text x="364" y="262" fill="#f4f2ea" font-size="23" font-weight="700">Genie Spaces</text>
+      <text x="364" y="292" fill="#8b93a7" font-size="15" font-weight="600">FOR EACH TEAM</text>
+      <text x="364" y="330" fill="#c9c6d4" font-size="16">Curated, domain-</text>
+      <text x="364" y="352" fill="#c9c6d4" font-size="16">specific data chat in</text>
+      <text x="364" y="374" fill="#c9c6d4" font-size="16">your own language.</text>
+    </g>
+    <!-- Genie Code -->
+    <g>
+      <rect x="612" y="150" width="250" height="320" rx="16" fill="#171922" stroke="#2b2d36"/>
+      <rect x="612" y="150" width="250" height="6" rx="3" fill="#818cf8"/>
+      <circle cx="652" cy="200" r="20" fill="#818cf8" opacity="0.18"/>
+      <circle cx="652" cy="200" r="9" fill="#818cf8"/>
+      <text x="640" y="262" fill="#f4f2ea" font-size="23" font-weight="700">Genie Code</text>
+      <text x="640" y="292" fill="#8b93a7" font-size="15" font-weight="600">FOR DEVELOPERS</text>
+      <text x="640" y="330" fill="#c9c6d4" font-size="16">Coding assistant in</text>
+      <text x="640" y="352" fill="#c9c6d4" font-size="16">notebooks, SQL and</text>
+      <text x="640" y="374" fill="#c9c6d4" font-size="16">pipelines.</text>
+    </g>
+    <!-- Genie Agents -->
+    <g>
+      <rect x="888" y="150" width="252" height="320" rx="16" fill="#171922" stroke="#2b2d36"/>
+      <rect x="888" y="150" width="252" height="6" rx="3" fill="#c084fc"/>
+      <circle cx="928" cy="200" r="20" fill="#c084fc" opacity="0.18"/>
+      <circle cx="928" cy="200" r="9" fill="#c084fc"/>
+      <text x="916" y="262" fill="#f4f2ea" font-size="23" font-weight="700">Genie Agents</text>
+      <text x="916" y="292" fill="#8b93a7" font-size="15" font-weight="600">FOR AUTOMATION</text>
+      <text x="916" y="330" fill="#c9c6d4" font-size="16">No-code agents that</text>
+      <text x="916" y="352" fill="#c9c6d4" font-size="16">do multi-step work,</text>
+      <text x="916" y="374" fill="#c9c6d4" font-size="16">not just answer.</text>
+    </g>
+  </g>
+
+  <!-- foundation: Ontology -->
+  <g font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif">
+    <rect x="60" y="512" width="1080" height="120" rx="16" fill="url(#foundation)"/>
+    <rect x="60" y="512" width="1080" height="120" rx="16" fill="#34d399" opacity="0.08"/>
+    <text x="90" y="562" fill="#eafff8" font-size="26" font-weight="800">Genie Ontology</text>
+    <text x="90" y="596" fill="#c7f6ea" font-size="17">The self-building knowledge graph that gives every Genie its business context &#8212; the shared brain.</text>
+    <text x="1112" y="580" text-anchor="end" fill="#eafff8" font-size="15" font-weight="600" opacity="0.85">FOUNDATION</text>
+  </g>
+</svg>
