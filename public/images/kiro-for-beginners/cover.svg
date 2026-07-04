@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="KIRO for Complete Beginners cover">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0e1a"/>
+      <stop offset="1" stop-color="#12101a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f59e0b"/>
+      <stop offset="1" stop-color="#f97316"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="945" cy="145" r="92" fill="#f97316" opacity="0.16" filter="url(#glow)"/>
+  <g font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif">
+    <rect x="64" y="82" width="148" height="30" rx="15" fill="none" stroke="#f97316" stroke-opacity="0.65"/>
+    <text x="82" y="102" fill="#fb923c" font-size="13" font-weight="700" letter-spacing="2.4">AI IDE</text>
+    <text x="62" y="208" fill="#f4f2ea" font-size="72" font-weight="800">KIRO</text>
+    <text x="62" y="268" fill="#f4f2ea" font-size="46" font-weight="700">for Complete</text>
+    <text x="62" y="325" fill="url(#accent)" font-size="56" font-weight="800">Beginners</text>
+    <text x="66" y="376" fill="#aaa7b6" font-size="24" font-weight="500">Plan first. Then code.</text>
+  </g>
+  <g font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif">
+    <rect x="555" y="125" width="500" height="382" rx="22" fill="#171922" stroke="#2b2d36"/>
+    <rect x="585" y="160" width="220" height="28" rx="14" fill="#f97316" fill-opacity="0.18"/>
+    <text x="607" y="181" fill="#fed7aa" font-size="15" font-weight="700">SPEC</text>
+    <rect x="585" y="220" width="370" height="16" rx="8" fill="#4b5563"/>
+    <rect x="585" y="255" width="300" height="16" rx="8" fill="#374151"/>
+    <rect x="585" y="290" width="410" height="16" rx="8" fill="#374151"/>
+    <path d="M630 382 h296" stroke="#f97316" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="630" cy="382" r="13" fill="#f97316"/>
+    <circle cx="728" cy="382" r="13" fill="#f59e0b"/>
+    <circle cx="827" cy="382" r="13" fill="#5eead4"/>
+    <circle cx="926" cy="382" r="13" fill="#818cf8"/>
+    <text x="593" y="438" fill="#f4f2ea" font-size="22" font-weight="700">prompt</text>
+    <text x="700" y="438" fill="#f4f2ea" font-size="22" font-weight="700">plan</text>
+    <text x="794" y="438" fill="#f4f2ea" font-size="22" font-weight="700">code</text>
+    <text x="895" y="438" fill="#f4f2ea" font-size="22" font-weight="700">verify</text>
+  </g>
+</svg>

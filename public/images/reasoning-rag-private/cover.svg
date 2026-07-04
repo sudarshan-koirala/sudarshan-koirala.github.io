@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Reasoning RAG 100 percent private cover">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#08111b"/>
+      <stop offset="1" stop-color="#101116"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5eead4"/>
+      <stop offset="1" stop-color="#10b981"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="930" cy="215" r="110" fill="#10b981" opacity="0.13" filter="url(#glow)"/>
+  <g font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif">
+    <rect x="64" y="82" width="182" height="30" rx="15" fill="none" stroke="#5eead4" stroke-opacity="0.65"/>
+    <text x="82" y="102" fill="#99f6e4" font-size="13" font-weight="700" letter-spacing="2.2">PRIVATE RAG</text>
+    <text x="62" y="204" fill="#f4f2ea" font-size="58" font-weight="800">Reasoning RAG</text>
+    <text x="62" y="292" fill="url(#accent)" font-size="84" font-weight="800">100% Private</text>
+    <text x="66" y="352" fill="#aaa7b6" font-size="24" font-weight="500">Local documents. Local answers.</text>
+  </g>
+  <g>
+    <rect x="620" y="128" width="350" height="420" rx="22" fill="#171922" stroke="#2b2d36"/>
+    <rect x="660" y="165" width="118" height="152" rx="12" fill="#20242f" stroke="#4b5563"/>
+    <path d="M684 206 h68 M684 232 h52 M684 258 h76" stroke="#9ca3af" stroke-width="8" stroke-linecap="round"/>
+    <rect x="815" y="165" width="118" height="152" rx="12" fill="#20242f" stroke="#4b5563"/>
+    <path d="M839 206 h68 M839 232 h52 M839 258 h76" stroke="#9ca3af" stroke-width="8" stroke-linecap="round"/>
+    <path d="M718 350 C 770 318 820 318 872 350 C 835 386 755 386 718 350 Z" fill="#5eead4" fill-opacity="0.16" stroke="#5eead4"/>
+    <circle cx="795" cy="350" r="18" fill="#5eead4"/>
+    <rect x="737" y="420" width="116" height="82" rx="16" fill="#10b981" fill-opacity="0.18" stroke="#5eead4"/>
+    <path d="M762 420 v-28 c0-45 66-45 66 0 v28" fill="none" stroke="#5eead4" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="795" cy="462" r="9" fill="#5eead4"/>
+  </g>
+</svg>

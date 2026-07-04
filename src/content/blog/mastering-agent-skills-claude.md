@@ -3,8 +3,11 @@ title: "Mastering Agent Skills for Data Science with Claude.ai"
 description: "Create reusable AI skills for Exploratory Data Analysis and Excel reporting - no coding required."
 date: 2026-02-01
 tags: ["claude", "ai-tools", "data-science", "skills"]
+image: "/images/mastering-agent-skills-claude/cover.svg"
 youtube: ""
 ---
+
+![Mastering Agent Skills for Data Science with Claude.ai cover](/images/mastering-agent-skills-claude/cover.svg)
 
 Agent Skills represent a shift in how we interact with AI assistants. Instead of treating each conversation as a blank slate, we can now build up Claude's capabilities over time, creating a personalized AI that understands our workflows and preferences.
 

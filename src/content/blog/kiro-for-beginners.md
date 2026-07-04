@@ -3,8 +3,11 @@ title: "KIRO for Complete Beginners"
 description: "KIRO is an AI-powered code editor by Amazon that plans before it codes. Here's everything you need to get started."
 date: 2026-05-17
 tags: ["kiro", "amazon", "ai-tools", "ide"]
+image: "/images/kiro-for-beginners/cover.svg"
 youtube: ""
 ---
+
+![KIRO for Complete Beginners cover](/images/kiro-for-beginners/cover.svg)
 
 KIRO is an AI-powered code editor made by Amazon. Think of it like having a very smart assistant that writes code for you, just by describing what you want in plain English.
 

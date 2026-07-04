@@ -3,8 +3,11 @@ title: "Reasoning RAG - 100% Private"
 description: "Combining RAG with reasoning LLMs for more reliable, transparent document Q&A - fully private and local."
 date: 2025-02-20
 tags: ["rag", "llm", "privacy", "ai"]
+image: "/images/reasoning-rag-private/cover.svg"
 youtube: ""
 ---
+
+![Reasoning RAG - 100% Private cover](/images/reasoning-rag-private/cover.svg)
 
 Retrieval Augmented Generation (RAG) is one of the most widely discussed use cases for LLMs. When you combine RAG with a reasoning LLM, the results become more reliable because you can see the thought process happening under the hood.
 

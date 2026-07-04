@@ -18,12 +18,17 @@ export const articlePins: string[] = [];
 // Hide articles you don't want surfaced on the site.
 export const articleHides: string[] = [];
 
+// Local covers for Medium posts whose RSS item does not expose an image.
+const articleImageOverrides: Record<string, string> = {
+  'loop-engineering-the-new-hype': '/images/loop-engineering/cover.svg',
+};
+
 // Shown only if the Medium feed can't be reached during the build.
 const fallbackMediumPosts: PostCardData[] = [
   { title: 'Omnigent: The Meta-Harness for All Your AI Agents', category: 'AI Tools', external: true, date: new Date('2026-07-03'), url: 'https://medium.com/@sudarshan-koirala/omnigent-the-meta-harness-for-all-your-ai-agents-4c91d2d8dfae', image: 'https://miro.medium.com/v2/resize:fit:1024/1*ESq5ArHb3v99dlaCts2fkA.png' },
   { title: 'Prompt vs Context vs Harness Engineering: The Three Layers Around Every AI Model', category: 'Engineering', external: true, date: new Date('2026-07-02'), url: 'https://medium.com/@sudarshan-koirala/prompt-vs-context-vs-harness-engineering-the-three-layers-around-every-ai-model-b31628b55845', image: 'https://miro.medium.com/v2/resize:fit:1024/1*Om6cZm4LFzcZ8UTqMvZogg.png' },
   { title: 'Claude Tag: How Anthropic Wants You to Put Claude to Work Right Inside Slack', category: 'AI Tools', external: true, date: new Date('2026-06-26'), url: 'https://medium.com/@sudarshan-koirala/claude-tag-how-anthropic-wants-you-to-put-claude-to-work-right-inside-slack-05a90a82dc29', image: 'https://miro.medium.com/v2/resize:fit:1024/1*NHClPFMc5-KPEx7rBTLmmQ.png' },
-  { title: 'Loop Engineering: The New Hype', category: 'Engineering', external: true, date: new Date('2026-06-24'), url: 'https://medium.com/@sudarshan-koirala/loop-engineering-the-new-hype-841beb68814d' },
+  { title: 'Loop Engineering: The New Hype', category: 'Engineering', external: true, date: new Date('2026-06-24'), url: 'https://medium.com/@sudarshan-koirala/loop-engineering-the-new-hype-841beb68814d', image: '/images/loop-engineering/cover.svg' },
   { title: 'Amazon Bedrock AgentCore Gateway: One Door for All Your MCP Servers', category: 'Engineering', external: true, date: new Date('2026-06-21'), url: 'https://medium.com/@sudarshan-koirala/amazon-bedrock-agentcore-gateway-one-door-for-all-your-mcp-servers-c1de1d68a85f', image: 'https://miro.medium.com/v2/resize:fit:1024/1*_g65z1JmZZcPM156YyAnvg.png' },
   { title: 'ParseBench from LlamaIndex: How to Actually Test if Your Document Parser Is Agent-Ready', category: 'LLMs & RAG', external: true, date: new Date('2026-06-20'), url: 'https://medium.com/@sudarshan-koirala/parsebench-from-llamaindex-how-to-actually-test-if-your-document-parser-is-agent-ready-d164b0341850', image: 'https://miro.medium.com/v2/resize:fit:1024/1*qeEdiB9pAiT88Dj2jb6hyA.png' },
   { title: 'Forward Deployed Engineer: The Hottest Job in AI, Explained', category: 'Engineering', external: true, date: new Date('2026-06-19'), url: 'https://medium.com/@sudarshan-koirala/forward-deployed-engineer-the-hottest-job-in-ai-explained-0650a03320b3', image: 'https://miro.medium.com/v2/resize:fit:1024/1*AVuwhu9DCyyCBn67mQYQWA.png' },
@@ -47,6 +52,10 @@ function coverImage(contentEncoded: string): string | undefined {
   return srcs.find((src) => /(?:cdn-images-\d+|miro)\.medium\.com/.test(src) && !src.includes('/_/stat'));
 }
 
+function articleImageOverride(url: string): string | undefined {
+  return Object.entries(articleImageOverrides).find(([slug]) => url.includes(slug))?.[1];
+}
+
 async function fetchMedium(): Promise<PostCardData[]> {
   const xml = await fetchText(MEDIUM_FEED);
   if (!xml) return [];
@@ -63,7 +72,7 @@ async function fetchMedium(): Promise<PostCardData[]> {
         external: true,
         date,
         category: inferCategory(title, tags),
-        image: coverImage(content),
+        image: coverImage(content) ?? articleImageOverride(url),
       } satisfies PostCardData;
     })
     .filter((p) => p.title && p.url && !Number.isNaN(p.date.getTime()));
