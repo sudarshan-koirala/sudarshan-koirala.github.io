@@ -1,5 +1,6 @@
 import { getCollection } from 'astro:content';
 import type { PostCardData } from '../components/PostCard.astro';
+import { fetchText, blocks, field, fieldAll } from './rss';
 
 // Category assigned to each local blog post (by file id)
 const localCategory: Record<string, string> = {
@@ -8,9 +9,16 @@ const localCategory: Record<string, string> = {
   'reasoning-rag-private': 'LLMs & RAG',
 };
 
-// Latest articles from medium.com/@sudarshan-koirala
-// Cover images are hotlinked from Medium's CDN; posts without one fall back to a gradient banner.
-export const mediumPosts: PostCardData[] = [
+const MEDIUM_FEED = 'https://medium.com/feed/@sudarshan-koirala';
+
+// ── Curation controls (match by URL slug substring) ─────────────────────────
+// Pin articles to the front, in this order (overrides recency).
+export const articlePins: string[] = [];
+// Hide articles you don't want surfaced on the site.
+export const articleHides: string[] = [];
+
+// Shown only if the Medium feed can't be reached during the build.
+const fallbackMediumPosts: PostCardData[] = [
   { title: 'Omnigent: The Meta-Harness for All Your AI Agents', category: 'AI Tools', external: true, date: new Date('2026-07-03'), url: 'https://medium.com/@sudarshan-koirala/omnigent-the-meta-harness-for-all-your-ai-agents-4c91d2d8dfae', image: 'https://miro.medium.com/v2/resize:fit:1024/1*ESq5ArHb3v99dlaCts2fkA.png' },
   { title: 'Prompt vs Context vs Harness Engineering: The Three Layers Around Every AI Model', category: 'Engineering', external: true, date: new Date('2026-07-02'), url: 'https://medium.com/@sudarshan-koirala/prompt-vs-context-vs-harness-engineering-the-three-layers-around-every-ai-model-b31628b55845', image: 'https://miro.medium.com/v2/resize:fit:1024/1*Om6cZm4LFzcZ8UTqMvZogg.png' },
   { title: 'Claude Tag: How Anthropic Wants You to Put Claude to Work Right Inside Slack', category: 'AI Tools', external: true, date: new Date('2026-06-26'), url: 'https://medium.com/@sudarshan-koirala/claude-tag-how-anthropic-wants-you-to-put-claude-to-work-right-inside-slack-05a90a82dc29', image: 'https://miro.medium.com/v2/resize:fit:1024/1*NHClPFMc5-KPEx7rBTLmmQ.png' },
@@ -22,6 +30,57 @@ export const mediumPosts: PostCardData[] = [
   { title: 'Databricks Data + AI Summit 2026: Every Big Announcement, Explained Simply', category: 'Databricks', external: true, date: new Date('2026-06-16'), url: 'https://medium.com/@sudarshan-koirala/databricks-data-ai-summit-2026-every-big-announcement-explained-simply-e5b613c3abc1', image: 'https://miro.medium.com/v2/resize:fit:1024/1*mbSSGzr2tFFLP9_ucdRUvA.png' },
   { title: 'OpenAPI & Swagger for Complete Beginners', category: 'Engineering', external: true, date: new Date('2026-06-14'), url: 'https://medium.com/@sudarshan-koirala/openapi-swagger-for-complete-beginners-4b9d38157369' },
 ];
+
+// Best-effort mapping from title + Medium tags to the site's card categories.
+function inferCategory(title: string, tags: string[]): string {
+  const hay = `${title} ${tags.join(' ')}`.toLowerCase();
+  if (hay.includes('databricks')) return 'Databricks';
+  if (/\b(rag|retrieval|llm|large-language|embedding|vector)\b/.test(hay)) return 'LLMs & RAG';
+  if (/\b(claude|agent|mcp|cursor|kiro|copilot|skill|prompt|context)\b/.test(hay)) return 'AI Tools';
+  return 'Engineering';
+}
+
+// First real content image (Medium CDN), skipping the tracking pixel.
+function coverImage(contentEncoded: string): string | undefined {
+  const srcs = [...contentEncoded.matchAll(/<img[^>]+src="([^"]+)"/g)].map((m) => m[1]);
+  return srcs.find((src) => /(?:cdn-images-\d+|miro)\.medium\.com/.test(src) && !src.includes('/_/stat'));
+}
+
+async function fetchMedium(): Promise<PostCardData[]> {
+  const xml = await fetchText(MEDIUM_FEED);
+  if (!xml) return [];
+  return blocks(xml, 'item')
+    .map((item) => {
+      const title = field(item, 'title');
+      const url = field(item, 'link').split('?')[0];
+      const date = new Date(field(item, 'pubDate'));
+      const tags = fieldAll(item, 'category');
+      const content = item.match(/<content:encoded>([\s\S]*?)<\/content:encoded>/)?.[1] ?? '';
+      return {
+        title,
+        url,
+        external: true,
+        date,
+        category: inferCategory(title, tags),
+        image: coverImage(content),
+      } satisfies PostCardData;
+    })
+    .filter((p) => p.title && p.url && !Number.isNaN(p.date.getTime()));
+}
+
+// Medium articles (auto), with pinned first and hidden ones removed.
+export async function getMediumPosts(): Promise<PostCardData[]> {
+  let items = await fetchMedium();
+  if (items.length === 0) items = fallbackMediumPosts;
+
+  items = items.filter((p) => !articleHides.some((slug) => p.url.includes(slug)));
+
+  const pinned = articlePins
+    .map((slug) => items.find((p) => p.url.includes(slug)))
+    .filter((p): p is PostCardData => Boolean(p));
+  const rest = items.filter((p) => !articlePins.some((slug) => p.url.includes(slug)));
+  return [...pinned, ...rest];
+}
 
 // Local blog posts (Markdown collection) mapped into the shared card shape.
 export async function getLocalPosts(): Promise<PostCardData[]> {
@@ -39,6 +98,6 @@ export async function getLocalPosts(): Promise<PostCardData[]> {
 
 // All posts (local + Medium), newest first.
 export async function getAllPosts(): Promise<PostCardData[]> {
-  const local = await getLocalPosts();
-  return [...local, ...mediumPosts].sort((a, b) => b.date.getTime() - a.date.getTime());
+  const [local, medium] = await Promise.all([getLocalPosts(), getMediumPosts()]);
+  return [...local, ...medium].sort((a, b) => b.date.getTime() - a.date.getTime());
 }
