@@ -20,6 +20,15 @@ const focusAreas = [
   },
 ];
 
+const projects = [
+  {
+    label: 'Live',
+    title: 'Nepali Bato',
+    text: 'A friendly web app that helps students learn the Nepali language step by step, with simple lessons and practice.',
+    href: 'https://www.nepali-bato.com/',
+  },
+];
+
 const channels = [
   {
     label: 'YouTube',
@@ -149,8 +158,28 @@ const channels = [
     </div>
   </section>
 
+  <section class="section">
+    <div class="container-wide">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Projects</p>
+          <h2 class="section-title-large">Things I'm building</h2>
+        </div>
+      </div>
+      <div class="channel-grid">
+        {projects.map((project) => (
+          <a class="channel-card" href={project.href} target="_blank" rel="noopener">
+            <span>{project.label}</span>
+            <h3>{project.title}</h3>
+            <p>{project.text}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   {posts.length > 0 && (
-    <section class="section">
+    <section class="section section-muted">
       <div class="container-wide">
         <div class="section-head">
           <div>
@@ -166,7 +195,7 @@ const channels = [
     </section>
   )}
 
-  <section class="section section-muted">
+  <section class="section">
     <div class="container-wide">
       <div class="section-head">
         <div>
@@ -187,7 +216,7 @@ const channels = [
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section-muted">
     <div class="container-wide">
       <div class="cta-banner">
         <div>
