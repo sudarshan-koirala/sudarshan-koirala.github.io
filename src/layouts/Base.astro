@@ -36,7 +36,7 @@ const isActive = (href: string) => {
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <!-- SEO -->
-  <title>{title} | {siteName}</title>
+  <title>{title.includes(siteName) ? title : `${title} | ${siteName}`}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonicalURL} />
   <meta name="author" content="Sudarshan Koirala" />
@@ -83,8 +83,44 @@ const isActive = (href: string) => {
       "@type": "Person",
       "name": "Sudarshan Koirala",
       "url": "https://sudarshan-koirala.github.io",
+      "image": ogImage.toString(),
+      "email": "mailto:basicsdatascience@gmail.com",
       "jobTitle": "Senior GenAI Engineer",
-      "worksFor": { "@type": "Organization", "name": "KONE" },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "KONE",
+        "url": "https://www.kone.com"
+      },
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Senior GenAI Engineer",
+        "occupationLocation": { "@type": "City", "name": "Espoo, Finland" }
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Espoo",
+        "addressRegion": "Uusimaa",
+        "addressCountry": "FI"
+      },
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "Aalto University" },
+        { "@type": "CollegeOrUniversity", "name": "Metropolia University of Applied Sciences" },
+        { "@type": "CollegeOrUniversity", "name": "Tribhuvan University" }
+      ],
+      "knowsAbout": [
+        "Generative AI",
+        "Large Language Models",
+        "Retrieval-Augmented Generation",
+        "MLOps",
+        "Machine Learning",
+        "Databricks",
+        "Apache Spark",
+        "Python",
+        "Data Engineering",
+        "AI Agents",
+        "LLM Application Development",
+        "Cloud Computing"
+      ],
       "sameAs": [
         "https://www.youtube.com/@datasciencebasics",
         "https://www.linkedin.com/in/sudarshan-koirala/",
