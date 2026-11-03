@@ -17,7 +17,7 @@ export const contact = {
 
 export const summary =
   'Senior GenAI Engineer at KONE with a path from physics and software engineering into data science, ' +
-  'machine learning and generative AI. I design and ship enterprise LLM solutions, set up the MLOps and ' +
+  'machine learning and generative AI. I design and ship enterprise agentic AI and LLM solutions, set up the MLOps and ' +
   'reliability practices that keep them running, and guide data science teams on taking models from ' +
   'prototype to production. Alongside my role, I teach applied AI to a large public audience through the ' +
   'Data Science Basics YouTube channel, Medium articles and open-source example code.';
@@ -49,10 +49,11 @@ export const experience: Role[] = [
     dates: 'Aug 2024 – Present',
     location: 'Espoo, Finland',
     summary:
-      'KONE is a global leader in elevators and escalators. I lead hands-on development of generative AI ' +
+      'KONE is a global leader in elevators and escalators. I lead hands-on development of agentic AI and generative AI ' +
       'solutions for enterprise use cases and help data science teams run them reliably.',
     highlights: [
       'Lead development of AI/ML-driven generative AI solutions, from LLM prototyping to production delivery.',
+      'Build agentic AI solutions where LLM-based agents plan and carry out multi-step tasks for enterprise use cases.',
       'Prototype and deliver LLM applications, including retrieval-augmented generation (RAG), on AWS Bedrock, Azure OpenAI and Databricks.',
       'Design automated workflows for building, testing and deploying ML solutions with CI/CD and model tracking.',
       'Set up SRE practices for AI systems: monitoring, reliability and operational readiness for production workloads.',
@@ -135,7 +136,7 @@ export const education: Degree[] = [
 ];
 
 export const skillGroups = [
-  { title: 'Generative AI & LLMs', items: ['RAG', 'LLM application design', 'AI agents', 'Evaluation', 'LangChain', 'LlamaIndex', 'Azure OpenAI', 'Amazon Bedrock', 'Ollama'] },
+  { title: 'Agentic AI & LLMs', items: ['Agentic AI', 'AI agents', 'RAG', 'LLM application design', 'Evaluation', 'LangChain', 'LlamaIndex', 'Azure OpenAI', 'Amazon Bedrock', 'Ollama'] },
   { title: 'Machine Learning', items: ['PyTorch', 'scikit-learn', 'XGBoost', 'NLP', 'spaCy', 'Deep learning', 'MLflow'] },
   { title: 'Data & Cloud', items: ['Databricks', 'Apache Spark', 'AWS', 'Azure', 'SQL'] },
   { title: 'MLOps & Engineering', items: ['CI/CD', 'GitLab CI', 'Docker', 'Terraform', 'Monitoring', 'SRE practices', 'Git', 'Linux'] },
