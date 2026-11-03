@@ -581,6 +581,48 @@ main strong {
   gap: 3rem;
   align-items: start;
 }
+.career-list {
+  list-style: none;
+  border-left: 2px solid var(--border);
+  padding-left: 1.4rem;
+}
+.career-list li {
+  position: relative;
+  display: grid;
+  padding: 0 0 1.15rem;
+  line-height: 1.4;
+}
+.career-list li:last-child {
+  padding-bottom: 0;
+}
+.career-list li::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.4rem - 7px);
+  top: 0.3rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--accent);
+}
+.career-list li:first-child::before {
+  background: var(--accent);
+}
+.career-dates {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.career-list strong {
+  font-size: 1rem;
+  margin-top: 0.15rem;
+}
+.career-org {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
 .inline-actions {
   display: flex;
   flex-wrap: wrap;
@@ -788,6 +830,9 @@ main strong {
 .about-main {
   min-width: 0;
 }
+.about-main .section {
+  padding: 1rem 0;
+}
 .about-header {
   padding-bottom: 1.5rem;
 }
@@ -934,6 +979,9 @@ main strong {
   padding-top: 3rem;
   padding-bottom: 4rem;
 }
+.print-link {
+  white-space: nowrap;
+}
 .document-header {
   display: flex;
   justify-content: space-between;
@@ -1003,6 +1051,78 @@ main strong {
 }
 .cv-container .document-section {
   padding-top: 1.75rem;
+}
+.document-header .document-role {
+  color: var(--ink);
+  font-weight: 700;
+}
+.document-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.9rem;
+}
+.print-only {
+  display: none;
+}
+.document-lead {
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+}
+.document-org {
+  color: var(--ink) !important;
+  font-weight: 600;
+}
+.document-org span {
+  color: var(--muted);
+  font-weight: 400;
+}
+.document-stack {
+  font-size: 0.84rem !important;
+  margin-top: 0.55rem;
+}
+.document-stack strong {
+  color: var(--ink);
+}
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.1rem;
+}
+.stat-strip div {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  display: flex;
+  flex-direction: column-reverse;
+}
+.stat-strip dd {
+  color: var(--accent);
+  font-size: 1.45rem;
+  font-weight: 900;
+  line-height: 1.15;
+}
+.stat-strip dt {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+.hero-stats {
+  margin-top: 1.6rem;
+}
+.skill-table {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem 1.6rem;
+}
+.skill-table h3 {
+  font-size: 0.92rem;
+  margin: 0;
+}
+.skill-table p {
+  margin-top: 0.15rem;
 }
 
 /* ── YouTube embed ───────────────────────────── */
@@ -1351,6 +1471,8 @@ main strong {
     font-size: 2.1rem;
   }
   .expertise-grid { grid-template-columns: 1fr; }
+  .stat-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .skill-table { grid-template-columns: 1fr; }
   .footer-inner {
     display: block;
   }
@@ -1441,9 +1563,30 @@ main strong {
 }
 
 @media print {
-  html {
+  /* Always print on white, even when the site is in dark mode. */
+  :root,
+  [data-theme="dark"] {
+    color-scheme: light;
+    --ink: #17202a;
+    --paper: #ffffff;
+    --accent: #0f766e;
+    --muted: #3f4b59;
+    --border: #d1d5db;
+    --surface: #ffffff;
+  }
+  html,
+  body {
     background: #fff;
     font-size: 12px;
+  }
+  .document-header,
+  .document-item-head {
+    display: flex;
+  }
+  .document-item-head span {
+    display: inline;
+    margin-top: 0;
+    white-space: nowrap;
   }
   .site-header,
   .site-footer,
@@ -1460,6 +1603,29 @@ main strong {
     border-color: #d1d5db;
   }
   a {
+    color: inherit;
+  }
+  .print-only {
+    display: inline;
+  }
+  .document-container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .document-section {
+    padding-top: 1rem;
+  }
+  .document-section h2 {
+    break-after: avoid;
+  }
+  .document-item {
+    break-inside: avoid;
+  }
+  .stat-strip div {
+    padding: 0.4rem 0.6rem;
+    background: none;
+  }
+  .stat-strip dd {
     color: inherit;
   }
 }

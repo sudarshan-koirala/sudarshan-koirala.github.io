@@ -1,8 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
+import { experience, education, skillGroups, languages } from '../data/profile';
 ---
 
-<Base title="About" description="Sudarshan Koirala - Senior GenAI Engineer at KONE, former Data Scientist at KONE, content creator, and AI educator based in Finland.">
+<Base title="About" description="Sudarshan Koirala - Senior GenAI Engineer at KONE, former Machine Learning Engineer and Data Scientist at KONE, content creator, and AI educator based in Finland.">
   <div class="container-wide">
     <div class="about-layout">
       <aside class="about-toc" aria-label="Table of contents">
@@ -31,7 +32,8 @@ import Base from '../layouts/Base.astro';
               data platforms, and practical AI systems that move from prototype to production.
             </p>
             <p>
-              Before my current Senior GenAI Engineer role, I worked as a Data Scientist at KONE,
+              I joined KONE in January 2022 as a Data Scientist Trainee and grew into Data Scientist and
+              Machine Learning Engineer roles before becoming Senior GenAI Engineer in August 2024,
               building machine learning and data science solutions across industrial and enterprise contexts.
               Earlier, I worked with Nokia Solutions and Networks on NLP and deep learning projects.
             </p>
@@ -74,46 +76,14 @@ import Base from '../layouts/Base.astro';
             </li>
           </ol>
 
-          <div class="timeline-item">
-            <div class="timeline-role">Senior GenAI Engineer</div>
-            <div class="timeline-company">KONE Oyj</div>
-            <div class="timeline-dates">Current role · Espoo, Finland</div>
-            <p class="timeline-desc">
-              Leading development of AI/ML-driven generative AI solutions. Designing automated workflows
-              for ML solutions, setting up SRE practices, prototyping with LLMs, and guiding data science
-              teams on MLOps best practices across AWS, Azure OpenAI, Databricks, and enterprise AI platforms.
-            </p>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-role">Data Scientist</div>
-            <div class="timeline-company">KONE Oyj</div>
-            <div class="timeline-dates">Earlier KONE role · Espoo, Finland</div>
-            <p class="timeline-desc">
-              Built data science and machine learning solutions at KONE before moving into the Senior GenAI
-              Engineer role, applying Python, SQL, cloud tooling, and ML workflows to enterprise use cases.
-            </p>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-role">Thesis Worker to Machine Learning Trainee</div>
-            <div class="timeline-company">Nokia Solutions and Networks Oyj</div>
-            <div class="timeline-dates">2020 - 2021</div>
-            <p class="timeline-desc">
-              Worked on NLP-based event discovery from social media feeds using spaCy and pre-trained models,
-              implemented deep neural networks for tabular data, and served as scrum master for a team of 15 trainees.
-            </p>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-role">Content Creator</div>
-            <div class="timeline-company">Data Science Basics</div>
-            <div class="timeline-dates">2022 - Present</div>
-            <p class="timeline-desc">
-              Creating practical tutorials on AI, data science, Databricks, LLMs, and developer tools, including
-              series on Databricks, LangChain, LlamaIndex, AI coding tools, and modern agent workflows.
-            </p>
-          </div>
+          {experience.map((role) => (
+            <div class="timeline-item">
+              <div class="timeline-role">{role.title}</div>
+              <div class="timeline-company">{role.company}</div>
+              <div class="timeline-dates">{role.dates}{role.location && ` · ${role.location}`}</div>
+              <p class="timeline-desc">{role.summary}</p>
+            </div>
+          ))}
         </section>
 
         <section id="expertise" class="section">
@@ -151,78 +121,27 @@ import Base from '../layouts/Base.astro';
         <section id="education" class="section">
           <h2 class="section-title">Education</h2>
 
-          <div class="timeline-item">
-            <div class="timeline-role">M.Sc. (Technology), Computer Science</div>
-            <div class="timeline-company">Aalto University</div>
-            <div class="timeline-dates">2019 - 2021 · GPA 4.27/5</div>
-            <p class="timeline-desc">
-              Major: Big Data and Large-Scale Computing. Minor: Machine Learning,
-              Data Science and Artificial Intelligence.
-            </p>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-role">B.Eng., Software Engineering</div>
-            <div class="timeline-company">Metropolia University of Applied Sciences</div>
-            <div class="timeline-dates">2018</div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-role">B.Sc., Physics</div>
-            <div class="timeline-company">Tribhuvan University, Nepal</div>
-            <div class="timeline-dates">2010</div>
-          </div>
+          {education.map((item) => (
+            <div class="timeline-item">
+              <div class="timeline-role">{item.degree}</div>
+              <div class="timeline-company">{item.school}</div>
+              <div class="timeline-dates">{item.dates}</div>
+              {item.details && <p class="timeline-desc">{item.details.join(' · ')}</p>}
+            </div>
+          ))}
         </section>
 
         <section id="skills" class="section">
           <h2 class="section-title">Skills</h2>
 
-          <div class="skill-group">
-            <div class="skill-group-title">Languages & Core</div>
-            <div class="skill-pills">
-              <span class="skill-pill">Python</span>
-              <span class="skill-pill">SQL</span>
-              <span class="skill-pill">PySpark</span>
-              <span class="skill-pill">JavaScript</span>
+          {[...skillGroups, { title: 'Languages', items: languages }].map((group) => (
+            <div class="skill-group">
+              <div class="skill-group-title">{group.title}</div>
+              <div class="skill-pills">
+                {group.items.map((item) => <span class="skill-pill">{item}</span>)}
+              </div>
             </div>
-          </div>
-
-          <div class="skill-group">
-            <div class="skill-group-title">AI / ML / LLMs</div>
-            <div class="skill-pills">
-              <span class="skill-pill">LangChain</span>
-              <span class="skill-pill">LlamaIndex</span>
-              <span class="skill-pill">RAG</span>
-              <span class="skill-pill">Azure OpenAI</span>
-              <span class="skill-pill">Amazon Bedrock</span>
-              <span class="skill-pill">PyTorch</span>
-              <span class="skill-pill">MLflow</span>
-              <span class="skill-pill">XGBoost</span>
-            </div>
-          </div>
-
-          <div class="skill-group">
-            <div class="skill-group-title">Data & Cloud</div>
-            <div class="skill-pills">
-              <span class="skill-pill">Databricks</span>
-              <span class="skill-pill">AWS</span>
-              <span class="skill-pill">Azure</span>
-              <span class="skill-pill">Apache Spark</span>
-              <span class="skill-pill">Docker</span>
-              <span class="skill-pill">GitLab CI</span>
-              <span class="skill-pill">Terraform</span>
-            </div>
-          </div>
-
-          <div class="skill-group">
-            <div class="skill-group-title">Languages</div>
-            <div class="skill-pills">
-              <span class="skill-pill">English (fluent)</span>
-              <span class="skill-pill">Nepali (native)</span>
-              <span class="skill-pill">Finnish (beginner)</span>
-              <span class="skill-pill">Hindi (satisfactory)</span>
-            </div>
-          </div>
+          ))}
         </section>
 
         <section id="contact" class="section">

@@ -12,7 +12,7 @@ interface Props {
 const {
   title,
   description = 'Senior GenAI Engineer, content creator, and educator. Writing about AI, Data Science, Databricks, LLMs, and developer tools.',
-  image = '/profile.png',
+  image = '/og-image.png',
   article = false,
   publishDate,
 } = Astro.props;
@@ -83,7 +83,7 @@ const isActive = (href: string) => {
       "@type": "Person",
       "name": "Sudarshan Koirala",
       "url": "https://sudarshan-koirala.github.io",
-      "image": ogImage.toString(),
+      "image": new URL('/profile.png', Astro.site).toString(),
       "email": "mailto:basicsdatascience@gmail.com",
       "jobTitle": "Senior GenAI Engineer",
       "worksFor": {

@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PostCard from '../components/PostCard.astro';
 import { getAllPosts } from '../data/posts';
+import { stats, products, openSource, experience, education } from '../data/profile';
 
 const posts = (await getAllPosts()).slice(0, 3);
 
@@ -21,18 +22,16 @@ const focusAreas = [
 ];
 
 const projects = [
-  {
-    label: 'Live',
-    title: 'Nepali Bato',
-    text: 'A friendly web app that helps students learn the Nepali language step by step, with simple lessons and practice.',
-    href: 'https://www.nepali-bato.com/',
-  },
-  {
-    label: 'Live',
-    title: 'Suomipolku',
-    text: 'A simple web app for learning Finnish step by step, making everyday vocabulary and phrases easy to practice.',
-    href: 'https://suomipolku.vercel.app/',
-  },
+  ...products.map((p) => ({ ...p, label: p.meta ?? 'Project' })),
+  ...openSource.slice(0, 4).map((p) => ({ ...p, label: p.meta ? `GitHub · ${p.meta.split(' · ')[0]}` : 'GitHub' })),
+];
+
+// Career at a glance: work roles (not the side channel) plus the master's degree.
+const milestones = [
+  ...experience
+    .filter((role) => role.company !== 'Data Science Basics')
+    .map((role) => ({ dates: role.dates, title: role.title, org: role.company })),
+  { dates: education[0].dates, title: education[0].degree, org: education[0].school },
 ];
 
 const channels = [
@@ -74,12 +73,14 @@ const channels = [
           <p class="eyebrow">Senior GenAI Engineer · AI educator · Creator</p>
           <h1><span class="hand-underline">Sudarshan Koirala</span></h1>
           <p class="hero-tagline">
-            I build enterprise AI systems at <strong>KONE</strong> and create practical learning
-            material for people working with data science, LLMs, Databricks, and modern developer tools.
+            I build and ship enterprise generative AI at <strong>KONE</strong>: LLM applications, RAG,
+            and the MLOps that keeps them reliable in production. I also teach applied AI to 24K+
+            developers through Data Science Basics.
           </p>
           <div class="hero-actions">
-            <a class="button-primary" href="/about">View profile</a>
+            <a class="button-primary" href="/cv">View CV</a>
             <a class="button-secondary" href="/resume">Resume</a>
+            <a class="button-secondary" href="/about">About me</a>
           </div>
           <div class="hero-links">
             <a href="https://www.linkedin.com/in/sudarshan-koirala/" target="_blank" rel="noopener">LinkedIn</a>
@@ -88,6 +89,14 @@ const channels = [
             <a href="https://github.com/sudarshan-koirala" target="_blank" rel="noopener">GitHub</a>
             <a href="https://topmate.io/sudarshan_koirala" target="_blank" rel="noopener">Consulting</a>
           </div>
+          <dl class="stat-strip hero-stats">
+            {stats.map((stat) => (
+              <div>
+                <dt>{stat.label}</dt>
+                <dd>{stat.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
         <aside class="hero-profile" aria-label="Profile summary">
           <img src="/profile.png" alt="Sudarshan Koirala" class="hero-photo" width="160" height="160" />
@@ -131,21 +140,27 @@ const channels = [
     <div class="container-wide">
       <div class="split-section">
         <div>
-          <p class="eyebrow">Professional profile</p>
-          <h2 class="section-title-large">A single place for my work, writing, videos, and technical background.</h2>
-        </div>
-        <div>
+          <p class="eyebrow">Experience at a glance</p>
+          <h2 class="section-title-large">From physics to production GenAI.</h2>
           <p>
-            My full-time work is focused on generative AI and machine learning systems in an enterprise
-            environment. Outside work, I publish tutorials and articles through Data Science Basics,
-            Medium, and GitHub for people who want practical guidance on applied AI.
+            Physics degree in Nepal, software engineering and an M.Sc. in Computer Science in Finland,
+            ML work at Nokia, then KONE since January 2022, growing from Data Scientist Trainee to
+            Senior GenAI Engineer.
           </p>
           <div class="inline-actions">
-            <a href="/cv">Read CV</a>
-            <a href="/videos">Watch videos</a>
-            <a href="/blog">Read articles</a>
+            <a href="/cv">Read full CV</a>
+            <a href="/resume">One-page resume</a>
           </div>
         </div>
+        <ol class="career-list">
+          {milestones.map((item) => (
+            <li>
+              <span class="career-dates">{item.dates}</span>
+              <strong>{item.title}</strong>
+              <span class="career-org">{item.org}</span>
+            </li>
+          ))}
+        </ol>
       </div>
     </div>
   </section>
@@ -175,7 +190,7 @@ const channels = [
       <div class="section-head">
         <div>
           <p class="eyebrow">Projects</p>
-          <h2 class="section-title-large">Things I'm building</h2>
+          <h2 class="section-title-large">Things I build and share</h2>
         </div>
       </div>
       <div class="channel-grid">
@@ -208,27 +223,6 @@ const channels = [
   )}
 
   <section class="section">
-    <div class="container-wide">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Video tutorials</p>
-          <h2 class="section-title-large">Featured YouTube playlist</h2>
-        </div>
-        <a href="/videos" class="section-link">All videos</a>
-      </div>
-      <div class="video-embed">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/videoseries?list=PLz-qytj7eIWWRz_1hFSleVBwZAoD1eTqU"
-          title="Databricks Free Edition"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          loading="lazy"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-muted">
     <div class="container-wide">
       <div class="cta-banner">
         <div>

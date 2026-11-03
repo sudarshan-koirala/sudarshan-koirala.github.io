@@ -1,14 +1,34 @@
 ---
 import Base from '../layouts/Base.astro';
+import {
+  contact,
+  summary,
+  stats,
+  experience,
+  education,
+  skillGroups,
+  languages,
+  openSource,
+  products,
+  selectedWriting,
+} from '../data/profile';
 ---
 
-<Base title="CV" description="Curriculum vitae of Sudarshan Koirala, Senior GenAI Engineer, former Data Scientist at KONE, and AI educator.">
+<Base title="CV" description="Curriculum vitae of Sudarshan Koirala: Senior GenAI Engineer at KONE, former ML Engineer and Data Scientist, ex-Nokia ML trainee, Aalto University M.Sc., and creator of Data Science Basics.">
   <div class="container document-container cv-container">
     <header class="document-header">
       <div>
         <p class="eyebrow">Curriculum Vitae</p>
-        <h1>Sudarshan Koirala</h1>
-        <p>Senior GenAI Engineer at KONE · AI, data science, MLOps, and technical education</p>
+        <h1>{contact.name}</h1>
+        <p class="document-role">{contact.headline} · Generative AI · MLOps · Data platforms · AI education</p>
+        <p class="document-contact">
+          <span>{contact.location}</span>
+          <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          {contact.links.map((link) => (
+            <a href={link.href} target="_blank" rel="noopener">{link.label}</a>
+          ))}
+          <a class="print-only" href={contact.website}>{contact.website.replace('https://', '')}</a>
+        </p>
       </div>
       <button class="print-link" type="button" onclick="window.print()">
         <span class="button-icon icon-print" aria-hidden="true"></span>
@@ -18,125 +38,120 @@ import Base from '../layouts/Base.astro';
 
     <section class="document-section">
       <h2>Profile</h2>
-      <p>
-        Sudarshan Koirala is a Senior GenAI Engineer at KONE in Espoo, Finland, with a background in
-        data science, machine learning, software engineering, and physics. His work focuses on practical
-        enterprise AI systems, generative AI, MLOps, data platforms, and education through Data Science Basics.
-      </p>
+      <p class="document-lead">{summary}</p>
+      <dl class="stat-strip">
+        {stats.map((stat) => (
+          <div>
+            <dt>{stat.label}</dt>
+            <dd>{stat.value}</dd>
+          </div>
+        ))}
+      </dl>
     </section>
 
     <section class="document-section">
-      <h2>Professional Appointments</h2>
-      <div class="document-item">
-        <div class="document-item-head">
-          <h3>Senior GenAI Engineer · KONE Oyj</h3>
-          <span>Current role · Espoo, Finland</span>
-        </div>
-        <p>
-          Leads and contributes to AI/ML-driven generative AI solutions, automated ML workflows,
-          SRE practices for AI systems, LLM prototyping, and MLOps guidance for data science teams.
-        </p>
+      <h2>Core Competencies</h2>
+      <div class="skill-table">
+        {skillGroups.map((group) => (
+          <div>
+            <h3>{group.title}</h3>
+            <p>{group.items.join(' · ')}</p>
+          </div>
+        ))}
       </div>
-      <div class="document-item">
-        <div class="document-item-head">
-          <h3>Data Scientist · KONE Oyj</h3>
-          <span>Earlier KONE role · Espoo, Finland</span>
+    </section>
+
+    <section class="document-section">
+      <h2>Professional Experience</h2>
+      {experience.map((role) => (
+        <div class="document-item">
+          <div class="document-item-head">
+            <h3>{role.title}</h3>
+            <span>{role.dates}</span>
+          </div>
+          <p class="document-org">
+            {role.companyUrl ? (
+              <a href={role.companyUrl} target="_blank" rel="noopener">{role.company}</a>
+            ) : role.company}
+            {role.location && <span> · {role.location}</span>}
+          </p>
+          <p>{role.summary}</p>
+          <ul>
+            {role.highlights.map((item) => <li>{item}</li>)}
+          </ul>
+          {role.stack && (
+            <p class="document-stack"><strong>Stack:</strong> {role.stack.join(', ')}</p>
+          )}
         </div>
-        <p>
-          Built data science and machine learning solutions using Python, SQL, cloud tooling, and ML workflows
-          before progressing into the Senior GenAI Engineer role.
-        </p>
-      </div>
-      <div class="document-item">
-        <div class="document-item-head">
-          <h3>Thesis Worker to Machine Learning Trainee · Nokia Solutions and Networks Oyj</h3>
-          <span>2020 - 2021</span>
-        </div>
-        <p>
-          Worked on NLP event discovery from social media feeds with spaCy and pre-trained models,
-          implemented deep neural networks for tabular data, and served as scrum master for a 15-person trainee team.
-        </p>
-      </div>
-      <div class="document-item">
-        <div class="document-item-head">
-          <h3>Content Creator · Data Science Basics</h3>
-          <span>2022 - Present</span>
-        </div>
-        <p>
-          Creates public tutorials and articles on AI, data science, Databricks, LLMs, developer tools,
-          agent workflows, and applied machine learning.
-        </p>
-      </div>
+      ))}
     </section>
 
     <section class="document-section">
       <h2>Education</h2>
-      <div class="document-item compact">
-        <h3>Aalto University</h3>
-        <p>M.Sc. (Technology), Computer Science · 2019 - 2021 · GPA 4.27/5</p>
-        <p>Major: Big Data and Large-Scale Computing · Minor: Machine Learning, Data Science and Artificial Intelligence</p>
-      </div>
-      <div class="document-item compact">
-        <h3>Metropolia University of Applied Sciences</h3>
-        <p>B.Eng., Software Engineering · 2018</p>
-      </div>
-      <div class="document-item compact">
-        <h3>Tribhuvan University, Nepal</h3>
-        <p>B.Sc., Physics · 2010</p>
-      </div>
+      {education.map((item) => (
+        <div class="document-item compact">
+          <div class="document-item-head">
+            <h3>{item.degree}</h3>
+            <span>{item.dates}</span>
+          </div>
+          <p class="document-org">{item.school}</p>
+          {item.details && <p>{item.details.join(' · ')}</p>}
+        </div>
+      ))}
     </section>
 
     <section class="document-section">
-      <h2>Technical Areas</h2>
-      <ul>
-        <li>Generative AI, RAG, LLM prototyping, applied AI engineering, and enterprise AI workflows.</li>
-        <li>MLOps, model tracking, automated ML workflows, CI/CD, reliability, and production readiness.</li>
-        <li>Databricks, Apache Spark, PySpark, SQL, Python, AWS, Azure, Azure OpenAI, Amazon Bedrock, and MLflow.</li>
-        <li>Technical education, tutorial design, and developer-focused AI communication.</li>
-      </ul>
+      <h2>Open-Source Work</h2>
+      {openSource.map((project) => (
+        <div class="document-item compact">
+          <div class="document-item-head">
+            <h3><a href={project.href} target="_blank" rel="noopener">{project.title}</a></h3>
+            {project.meta && <span>{project.meta}</span>}
+          </div>
+          <p>{project.text}</p>
+        </div>
+      ))}
     </section>
 
     <section class="document-section">
-      <h2>Selected Public Work</h2>
-      <ul>
-        <li>Data Science Basics YouTube channel covering AI, data science, Databricks, LLMs, and developer tools.</li>
-        <li><a href="https://medium.com/@sudarshan-koirala/omnigent-the-meta-harness-for-all-your-ai-agents-4c91d2d8dfae" target="_blank" rel="noopener">Omnigent: The Meta-Harness for All Your AI Agents</a></li>
-        <li><a href="https://medium.com/@sudarshan-koirala/prompt-vs-context-vs-harness-engineering-the-three-layers-around-every-ai-model-b31628b55845" target="_blank" rel="noopener">Prompt vs Context vs Harness Engineering</a></li>
-        <li><a href="https://medium.com/@sudarshan-koirala/databricks-data-ai-summit-2026-every-big-announcement-explained-simply-e5b613c3abc1" target="_blank" rel="noopener">Databricks Data + AI Summit 2026: Every Big Announcement, Explained Simply</a></li>
-      </ul>
+      <h2>Side Projects</h2>
+      {products.map((project) => (
+        <div class="document-item compact">
+          <div class="document-item-head">
+            <h3><a href={project.href} target="_blank" rel="noopener">{project.title}</a></h3>
+            {project.meta && <span>{project.meta}</span>}
+          </div>
+          <p>{project.text}</p>
+        </div>
+      ))}
     </section>
 
     <section class="document-section">
-      <h2>Selected Tutorials</h2>
+      <h2>Selected Writing</h2>
       <ul>
-        <li>30 Days of Databricks tutorials for practical lakehouse and AI workflows.</li>
-        <li>LangChain and LlamaIndex walkthroughs for RAG and agent-style applications.</li>
-        <li>AI developer tool reviews and implementation notes for modern coding workflows.</li>
+        {selectedWriting.map((post) => (
+          <li><a href={post.href} target="_blank" rel="noopener">{post.title}</a></li>
+        ))}
       </ul>
+      <p>
+        More on <a href="/blog">the blog</a>, <a href="https://medium.com/@sudarshan-koirala" target="_blank" rel="noopener">Medium</a>
+        and the weekly LinkedIn newsletter
+        <a href="https://www.linkedin.com/newsletters/the-agent-brief-7482745760560697344" target="_blank" rel="noopener">The Agent Brief</a>.
+      </p>
     </section>
 
     <section class="document-section">
       <h2>Professional Interests</h2>
       <ul>
         <li>Reliable enterprise AI systems and MLOps practices for production teams.</li>
-        <li>LLM application design, evaluation, observability, and workflow automation.</li>
+        <li>LLM application design, evaluation, observability and AI agent workflows.</li>
         <li>Teaching complex AI and data platform concepts in practical, beginner-friendly ways.</li>
       </ul>
     </section>
 
     <section class="document-section">
       <h2>Languages</h2>
-      <p>English (fluent) · Nepali (native) · Finnish (beginner) · Hindi (satisfactory)</p>
-    </section>
-
-    <section class="document-section">
-      <h2>Contact</h2>
-      <p>
-        <a href="mailto:basicsdatascience@gmail.com">basicsdatascience@gmail.com</a> ·
-        <a href="https://www.linkedin.com/in/sudarshan-koirala/" target="_blank" rel="noopener">LinkedIn</a> ·
-        <a href="https://github.com/sudarshan-koirala" target="_blank" rel="noopener">GitHub</a> ·
-        <a href="https://www.youtube.com/@datasciencebasics" target="_blank" rel="noopener">YouTube</a>
-      </p>
+      <p>{languages.join(' · ')}</p>
     </section>
   </div>
 </Base>
