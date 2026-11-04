@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PostCard from '../components/PostCard.astro';
 import { getAllPosts } from '../data/posts';
-import { stats, products, openSource, experience, education } from '../data/profile';
+import { stats, products, openSource, experience, education, recognition } from '../data/profile';
 
 const posts = (await getAllPosts()).slice(0, 3);
 
@@ -63,14 +63,14 @@ const channels = [
 ---
 
 <Base
-  title="Sudarshan Koirala - Senior GenAI Engineer, AI Educator, and Creator"
-  description="Sudarshan Koirala is a Senior GenAI Engineer at KONE building agentic AI solutions, creator of Data Science Basics, and writer on AI, Databricks, LLMs, MLOps, and developer tools."
+  title="Sudarshan Koirala - Senior GenAI Engineer, Databricks MVP, and AI Educator"
+  description="Sudarshan Koirala is a Senior GenAI Engineer at KONE building agentic AI solutions, Databricks MVP, creator of Data Science Basics, and writer on AI, Databricks, LLMs, MLOps, and developer tools."
 >
   <section class="hero">
     <div class="container-wide">
       <div class="hero-inner">
         <div class="hero-text">
-          <p class="eyebrow">Senior GenAI Engineer · AI educator · Creator</p>
+          <p class="eyebrow">Senior GenAI Engineer · Databricks MVP · AI educator</p>
           <h1><span class="hand-underline">Sudarshan Koirala</span></h1>
           <p class="hero-tagline">
             I build and ship enterprise agentic AI at <strong>KONE</strong>: AI agents, LLM applications, RAG,
@@ -103,6 +103,10 @@ const channels = [
           <div>
             <span>Current role</span>
             <strong>Senior GenAI Engineer, KONE</strong>
+          </div>
+          <div>
+            <span>Recognition</span>
+            <strong><a href={recognition[0].href} target="_blank" rel="noopener">{recognition[0].title}</a></strong>
           </div>
           <div>
             <span>Public work</span>

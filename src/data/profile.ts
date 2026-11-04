@@ -15,8 +15,17 @@ export const contact = {
   ],
 };
 
+export const recognition = [
+  {
+    title: 'Databricks MVP',
+    issuer: 'Databricks',
+    href: 'https://developers.databricks.com/mvps/directory?q=sudar',
+    text: 'Recognized by Databricks as a Most Valuable Professional for technical expertise and community contributions on the Databricks Data Intelligence Platform.',
+  },
+];
+
 export const summary =
-  'Senior GenAI Engineer at KONE with a path from physics and software engineering into data science, ' +
+  'Senior GenAI Engineer at KONE and Databricks MVP with a path from physics and software engineering into data science, ' +
   'machine learning and generative AI. I design and ship enterprise agentic AI and LLM solutions, set up the MLOps and ' +
   'reliability practices that keep them running, and guide data science teams on taking models from ' +
   'prototype to production. Alongside my role, I teach applied AI to a large public audience through the ' +

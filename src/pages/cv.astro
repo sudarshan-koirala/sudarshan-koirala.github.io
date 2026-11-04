@@ -11,10 +11,11 @@ import {
   openSource,
   products,
   selectedWriting,
+  recognition,
 } from '../data/profile';
 ---
 
-<Base title="CV" description="Curriculum vitae of Sudarshan Koirala: Senior GenAI Engineer at KONE building agentic AI solutions, former ML Engineer and Data Scientist, ex-Nokia ML trainee, Aalto University M.Sc., and creator of Data Science Basics.">
+<Base title="CV" description="Curriculum vitae of Sudarshan Koirala: Senior GenAI Engineer at KONE building agentic AI solutions, Databricks MVP, former ML Engineer and Data Scientist, ex-Nokia ML trainee, Aalto University M.Sc., and creator of Data Science Basics.">
   <div class="container document-container cv-container">
     <header class="document-header">
       <div>
@@ -96,6 +97,19 @@ import {
           </div>
           <p class="document-org">{item.school}</p>
           {item.details && <p>{item.details.join(' · ')}</p>}
+        </div>
+      ))}
+    </section>
+
+    <section class="document-section">
+      <h2>Recognition</h2>
+      {recognition.map((item) => (
+        <div class="document-item compact">
+          <div class="document-item-head">
+            <h3><a href={item.href} target="_blank" rel="noopener">{item.title}</a></h3>
+            <span>{item.issuer}</span>
+          </div>
+          <p>{item.text}</p>
         </div>
       ))}
     </section>

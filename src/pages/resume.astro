@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { contact, summary, stats, experience, education, skillGroups, languages } from '../data/profile';
+import { contact, summary, stats, experience, education, skillGroups, languages, recognition } from '../data/profile';
 ---
 
 <Base title="Resume" description="One-page resume of Sudarshan Koirala, Senior GenAI Engineer at KONE and creator of Data Science Basics.">
@@ -58,6 +58,13 @@ import { contact, summary, stats, experience, education, skillGroups, languages 
           </div>
           {item.details && <p>{item.details.join(' · ')}</p>}
         </div>
+      ))}
+    </section>
+
+    <section class="document-section">
+      <h2>Recognition</h2>
+      {recognition.map((item) => (
+        <p><strong><a href={item.href} target="_blank" rel="noopener">{item.title}</a></strong> · {item.issuer}</p>
       ))}
     </section>
 
