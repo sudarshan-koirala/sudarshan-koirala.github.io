@@ -386,6 +386,34 @@ main strong {
   aspect-ratio: 1;
   margin-bottom: 1rem;
 }
+.mvp-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent-light);
+  color: var(--accent);
+}
+.mvp-badge:hover {
+  background: var(--accent);
+  color: var(--surface);
+  text-decoration: none;
+}
+.mvp-badge svg { flex-shrink: 0; }
+.hero-profile .mvp-badge-text { display: block; color: inherit; text-transform: none; letter-spacing: normal; font-weight: 400; }
+.hero-profile .mvp-badge-text strong {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+.mvp-badge-text small {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
 .hero-profile div {
   padding: 0.85rem 0;
   border-top: 1px solid var(--border);
